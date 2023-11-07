@@ -26,7 +26,7 @@ class EmployeeData{
 //method to get values from user
 void getValue(string varName, int *intPtr, string *strPtr){
 
-    cout << "\nEnter employee " << varName;
+    cout << "Enter employee " << varName;
     if (intPtr == 0)
         cin >> *strPtr;
     else
@@ -38,12 +38,16 @@ void getValue(string varName, int *intPtr, string *strPtr){
 int main(){
 
     EmployeeData arrOfEmp[5];
+    int n;
+
+    cout << "\nHow many employee data you want to enter : ";
+    cin >> n;
 
     //Getting employee data from user
-    for (short i = 0; i < 1; i++){
+    for (short i = 0; i < n; i++){
 
         cout << "\n\nEnter employee " << i + 1 << " details:" <<
-                "\n-----------------------------------------";
+                "\n-----------------------------------------\n";
 
         getValue("employee ID : ", &arrOfEmp[i].empId, 0);
         getValue("employee NAME : ", 0, &arrOfEmp[i].empName);
@@ -51,10 +55,25 @@ int main(){
         getValue("employee ROLE : ", 0, &arrOfEmp[i].empRole);
         getValue("employee SALARY : ", &arrOfEmp[i].empSalary, 0);
         getValue("employee CITY : ", 0, &arrOfEmp[i].empCity);
-        getValue("employee EXPERIENCE : ", &arrOfEmp[i].empExperience, 0);
-        getValue("employee COMPANY NAME : ", 0, &arrOfEmp[i].empName);
+        getValue("employee EXPERIENCE (IN YEAR) : ", &arrOfEmp[i].empExperience, 0);
+        getValue("employee COMPANY NAME : ", 0, &arrOfEmp[i].empCompanyName);
 
     }
+
+    //printing all employee data
+    cout << "\n\nEmployee Data";
+    cout << "\n-----------------------------------------";
+
+    for (short i = 0; i < n; i++)
+        cout << "\n\nEmployee " << i + 1 << "\nID : " << arrOfEmp[i].empId
+            << "\nNAME : " << arrOfEmp[i].empName
+            << "\nAGE : " << arrOfEmp[i].empAge
+            << "\nROLE : " << arrOfEmp[i].empRole
+            << "\nSALARY : " << arrOfEmp[i].empSalary
+            << "\nCITY : " << arrOfEmp[i].empCity
+            << "\nEXPERIENCE : " << arrOfEmp[i].empExperience << " YEARS"
+            << "\nCOMPANY NAME : " << arrOfEmp[i].empCompanyName
+            << "\n----------------------------";
 
     return 0;
 }
