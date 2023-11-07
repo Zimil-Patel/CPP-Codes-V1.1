@@ -40,7 +40,7 @@ int main(){
     cout << "\nHow many car data you want to enter : ";
     cin >> n;
 
-    //Getting employee data from user
+    //Getting car data from user
     for (short i = 0; i < n; i++){
 
         cout << "\n\nEnter car " << i + 1 << " details:" <<
@@ -54,7 +54,7 @@ int main(){
 
     }
 
-    //printing all employee data
+    //printing all car data
     cout << "\n\nCar Data";
     cout << "\n-----------------------------------------";
 
