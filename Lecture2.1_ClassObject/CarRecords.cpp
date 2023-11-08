@@ -24,8 +24,10 @@ class CarData{
 void getValue(string varName, int *intPtr, string *strPtr){
 
     cout << "Enter car " << varName;
-    if (intPtr == 0)
-        cin >> *strPtr;
+    if (intPtr == 0){
+        cin.ignore();
+        getline(cin, *strPtr);
+    }
     else
         cin >> *intPtr;
 
@@ -64,7 +66,7 @@ int main(){
             << "\nCOLOR : " << arrOfCar[i].carColor
             << "\nMODEL : " << arrOfCar[i].carModel
             << "\nRELEASE YEAR : " << arrOfCar[i].carReleaseYear
-            << "\n----------------------------";
+            << "\n\n----------------------------";
 
     return 0;
 }

@@ -27,8 +27,10 @@ class EmployeeData{
 void getValue(string varName, int *intPtr, string *strPtr){
 
     cout << "Enter employee " << varName;
-    if (intPtr == 0)
-        cin >> *strPtr;
+    if (intPtr == 0){
+        cin.ignore();
+        getline(cin, *strPtr);
+    }
     else
         cin >> *intPtr;
 
@@ -73,7 +75,7 @@ int main(){
             << "\nCITY : " << arrOfEmp[i].empCity
             << "\nEXPERIENCE : " << arrOfEmp[i].empExperience << " YEARS"
             << "\nCOMPANY NAME : " << arrOfEmp[i].empCompanyName
-            << "\n----------------------------";
+            << "\n\n----------------------------";
 
     return 0;
 }
