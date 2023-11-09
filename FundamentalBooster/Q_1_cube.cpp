@@ -14,26 +14,46 @@ class Arithmetics{
 
     int num;
 
-    int findCube(int num){
+    //getting number from user
+    void getValues(){ 
 
-        return num * num * num; //returing cube of number
-    };
+        cout << endl << "Enter the number to find cube : ";
+        cin >> num;
+
+    }
+
+    // calculate cube of number
+    int findCube(int num){ 
+
+        return num * num * num;
+
+    }
+
+    //displaying cube of number
+    void display(){ 
+
+        cout << "Cube of " << 
+            num << 
+            " (" << num << "*" << num << "*" << num << ")" << 
+            " is " << 
+            findCube(num) << endl << endl; 
+
+    }
+
+   
 
 };
 
 //main method
 int main(){
 
-    Arithmetics cubeOfNumber; //making object of Arithmetic class
+    Arithmetics perform = Arithmetics();
 
-    cout << endl << "Enter the number to find cube : ";
-    cin >> cubeOfNumber.num;
+    //get values
+    perform.getValues();
 
-    cout << "Cube of " << 
-            cubeOfNumber.num << 
-            " (" << cubeOfNumber.num << "*" << cubeOfNumber.num << "*" << cubeOfNumber.num << ")" << 
-            " is " << 
-            cubeOfNumber.findCube(cubeOfNumber.num) << endl << endl; //calling findCube method
+    //calculate and display cube
+    perform.display();
 
     return 0;
 }

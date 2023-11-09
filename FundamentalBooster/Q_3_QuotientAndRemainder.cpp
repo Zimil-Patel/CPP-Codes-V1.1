@@ -17,6 +17,26 @@ class Arithmetic{
 
     int dividend, divisor;
 
+    //getting values from user
+    void getValues(){
+
+        cout << endl << "Enter the number(divisor) : ";
+        cin >> dividend;
+
+        cout << "Enter the number(divisor) : ";
+        cin >> divisor; 
+
+    }
+
+    //displaying result quotient and remainder
+    void display(){
+
+        cout << endl << "Quotient : " << setprecision(2) << (float)dividend / (float)divisor <<
+            endl << "Remainder : " << dividend % divisor << 
+            endl << endl; 
+
+    }
+
 };
 
 //main method
@@ -24,15 +44,11 @@ int main(){
 
     Arithmetic perform;
 
-    cout << endl << "Enter the number(divisor) : ";
-    cin >> perform.dividend;
+    //getting user value
+    perform.getValues();
 
-    cout << "Enter the number(divisor) : ";
-    cin >> perform.divisor; 
-
-    cout << endl << "Quotient : " << setprecision(2) << (float)perform.dividend / (float)perform.divisor <<
-            endl << "Remainder : " << perform.dividend % perform.divisor << 
-            endl << endl; 
+    //displaying result
+    perform.display();
 
     return 0;
 }
