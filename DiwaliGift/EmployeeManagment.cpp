@@ -68,11 +68,9 @@ class EmpDashFunctions{
                 cin >> empData[i].id;
 
                 cout << "Employee name : ";
-                // cin.ignore();
                 getline(cin >> ws, empData[i].name);
 
                 cout << "Employee role : ";
-                // cin.ignore();
                 getline(cin >> ws, empData[i].role);
                 empData[i].role = stringToUpper(empData[i].role);
 
