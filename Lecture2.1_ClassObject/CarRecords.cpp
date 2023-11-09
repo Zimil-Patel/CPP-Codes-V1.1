@@ -25,8 +25,8 @@ void getValue(string varName, int *intPtr, string *strPtr){
 
     cout << "Enter car " << varName;
     if (intPtr == 0){
-        cin.ignore();
-        getline(cin, *strPtr);
+        // cin.ignore();
+        getline(cin >> ws, *strPtr);
     }
     else
         cin >> *intPtr;
