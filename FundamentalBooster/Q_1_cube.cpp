@@ -49,11 +49,21 @@ int main(){
 
     Arithmetics perform = Arithmetics();
 
-    //get values
-    perform.getValues();
+    char repeat = 'y';
 
-    //calculate and display cube
-    perform.display();
+    while (repeat == 'y'){
+
+        //getting user value
+        perform.getValues();
+
+        //displaying result
+        perform.display();
+
+        //Asking user to perform again
+        cout << "Do you want to perform again ? (y/n) : ";
+        cin >> repeat;
+
+    }
 
     return 0;
 }

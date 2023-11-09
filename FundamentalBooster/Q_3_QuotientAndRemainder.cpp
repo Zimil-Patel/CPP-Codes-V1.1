@@ -44,11 +44,21 @@ int main(){
 
     Arithmetic perform;
 
-    //getting user value
-    perform.getValues();
+    char repeat = 'y';
 
-    //displaying result
-    perform.display();
+    while (repeat == 'y'){
+
+        //getting user value
+        perform.getValues();
+
+        //displaying result
+        perform.display();
+
+        //Asking user to perform again
+        cout << "Do you want to perform again ? (y/n) : ";
+        cin >> repeat;
+
+    }
 
     return 0;
 }
