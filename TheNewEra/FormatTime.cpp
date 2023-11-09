@@ -30,9 +30,8 @@ class TimeFormat{
     void formatSec(){
 
         hrs = sec / 3600;
-        sec = sec - (hrs % 3600);
-        min = sec / 60;
-        sec = sec - (min % 60);
+        min = (sec - (hrs * 3600)) / 60;
+        sec = sec - (hrs * 3600) - (min * 60);
 
     }
 
