@@ -44,6 +44,27 @@ class EmpDashFunctions{
         return oString;
     }
 
+    //function to decide employee salary according thier role
+    int getEmpSalary(string role){
+
+        int salary = 0;
+
+        if (role == "INTERN")
+            salary = 8000;
+        else if (role == "JUNIOR STAFFER")
+            salary = 15000;
+        else if (role == "SENIOR STAFFER")
+            salary = 30000;
+        else if (role == "TEAM LEADER")
+            salary = 45000;
+        else if (role == "DEPARTMENT HEAD")
+            salary = 50000;
+        else if (role == "COO")
+            salary = 70000;
+
+        return salary;
+    }
+
     //Displaying dashboard and asking choice
     int showDash(){
 
@@ -80,7 +101,7 @@ class EmpDashFunctions{
                 getline(cin >> ws, empData[i].role);
                 empData[i].role = stringToUpper(empData[i].role);
 
-                empData[i].salary = 0;
+                empData[i].salary = getEmpSalary(empData[i].role);
 
                 cout << endl << "--- Employee added successfully ---" << endl;
 
@@ -125,11 +146,13 @@ class EmpDashFunctions{
                         endl << "id : " << empData[i].id <<
                         endl << "name : " << empData[i].name <<
                         endl << "role : " << empData[i].role <<
-                        endl << "salary : " << empData[i].salary << endl << endl;
+                        endl << "salary : " << empData[i].salary << " Rs.";
 
             }
 
         }
+
+        cout << endl << endl << endl;
 
     }
 
