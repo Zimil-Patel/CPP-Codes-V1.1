@@ -1,10 +1,16 @@
-// Employee Management system - (sujit-kuldeep),(jaydeep-zimil)
-// register
-// salary
-// gst
-// bonus
-// role
-// fired
+/* Employee Management system - (sujit-kuldeep),(jaydeep-zimil)
+register
+salary
+gst
+bonus
+role -- Intern - 8000, 
+        Junior staffer - 15000, 
+        senior staffer 30000, 
+        Team Leader - 45000, 
+        Deparment head - 50000, 
+        COO(cheif oeprating officer) - 70000
+fired
+*/
 
 #include<iostream>
 using namespace std;
