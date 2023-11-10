@@ -187,12 +187,12 @@ class EmpDashFunctions{
     //function to make changes in tax
     void setTaxToSalary(){
 
-        cout << endl << "How much tax you want tp apply? : ";
+        cout << endl << "How much tax you want to apply? : ";
         cin >> tax;
 
         updateSalary(tax, bonus);
 
-        cout << "---- Tax changed successfully ----" << endl << endl;
+        cout << endl << "---- Tax changed successfully ----" << endl << endl;
 
     }
 
