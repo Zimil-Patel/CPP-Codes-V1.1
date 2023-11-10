@@ -1,7 +1,7 @@
 /* Employee Management system - (sujit-kuldeep),(jaydeep-zimil)
 register
 salary
-gst
+tax
 bonus
 role -- Intern - 8000, 
         Junior staffer - 15000, 
@@ -28,12 +28,11 @@ class EmployeeData{
 
 };
 
-class EmpDashFunctions{
 
-    EmployeeData empData[10];
+//additional functions included in this class
+class ExtraFunctions{
 
     public:
-    int choice = 0, i;
 
     //function for converting string to upper
     string stringToUpper(string oString){
@@ -44,26 +43,47 @@ class EmpDashFunctions{
         return oString;
     }
 
+
     //function to decide employee salary according thier role
-    int getEmpSalary(string role){
+    int getEmpSalary(string role, float tax, int bonus){
 
         int salary = 0;
 
         if (role == "INTERN")
-            salary = 8000;
+            salary = 8000 - ((8000 * tax) / 100) + bonus;
         else if (role == "JUNIOR STAFFER")
-            salary = 15000;
+            salary = 15000 - ((15000 * tax) / 100) + bonus;
         else if (role == "SENIOR STAFFER")
-            salary = 30000;
+            salary = 30000 - ((30000 * tax) / 100) + bonus;
         else if (role == "TEAM LEADER")
-            salary = 45000;
+            salary = 45000 - ((45000 * tax) / 100) + bonus;
         else if (role == "DEPARTMENT HEAD")
-            salary = 50000;
+            salary = 50000 - ((50000 * tax) / 100) + bonus;
         else if (role == "COO")
-            salary = 70000;
+            salary = 70000 - ((70000 * tax) / 100) + bonus;
 
         return salary;
-    }
+        
+    }  
+
+};
+
+
+//this class include all operations related to employee dash
+class EmpDashFunctions{
+
+    public:
+
+    EmployeeData empData[10];
+
+    ExtraFunctions perform;
+
+    int choice = 0, i;
+
+    float tax = 0.0;
+
+    int bonus = 0;
+
 
     //Displaying dashboard and asking choice
     int showDash(){
@@ -71,7 +91,8 @@ class EmpDashFunctions{
         cout << endl << "----------- DashBoard -----------  " <<
                 endl << "| 1. Register new employee      |" << 
                 endl << "| 2. View all employees         |" <<
-                endl << "| 3. Exit                       |" <<
+                endl << "| 3. Set Tax to salary          |" <<
+                endl << "| 4. Exit                       |" <<
                 endl << "--------------------------------- "<<
                 endl;
 
@@ -81,6 +102,7 @@ class EmpDashFunctions{
         return choice;
     }
     
+
     //Register new employee.
     void regNewEmp(){
 
@@ -99,11 +121,14 @@ class EmpDashFunctions{
 
                 cout << "Employee role : ";
                 getline(cin >> ws, empData[i].role);
-                empData[i].role = stringToUpper(empData[i].role);
 
-                empData[i].salary = getEmpSalary(empData[i].role);
+                //coverting role string into uppercase
+                empData[i].role = perform.stringToUpper(empData[i].role); 
 
-                cout << endl << "--- Employee added successfully ---" << endl;
+                //fetching employee salary according their role
+                empData[i].salary = perform.getEmpSalary(empData[i].role, tax, bonus);
+
+                cout << endl << "--- Employee added successfully ---" << endl << endl;
 
                 break;
 
@@ -122,6 +147,7 @@ class EmpDashFunctions{
         }
 
     }
+
 
     //View all employee method
     void viewAllEmp(){
@@ -152,11 +178,39 @@ class EmpDashFunctions{
 
         }
 
-        cout << endl << endl << endl;
+        cout << endl << "---------------------------------" << endl << endl;
+
 
     }
 
 
+    //function to make changes in tax
+    void setTaxToSalary(){
+
+        cout << endl << "How much tax you want tp apply? : ";
+        cin >> tax;
+
+        updateSalary(tax, bonus);
+
+        cout << "---- Tax changed successfully ----" << endl << endl;
+
+    }
+
+
+    //update employee salary after changes in tax or bonus
+    void updateSalary(float tax, int bonus){
+
+        for (i = 0; i < 10; i++){
+
+            //Chekcing is there exists an employee
+            if (empData[i].id == 0)
+                break;
+            else
+                empData[i].salary = perform.getEmpSalary(empData[i].role, tax, bonus);
+
+        }
+    
+    }
 
 };
 
@@ -169,7 +223,7 @@ int main(){
     //displaying employee managment dashboard
     empDashFun.showDash();
 
-    while (empDashFun.choice != 3){
+    while (empDashFun.choice != 4){
 
         switch (empDashFun.choice){
 
@@ -180,6 +234,11 @@ int main(){
 
             case 2:
                 empDashFun.viewAllEmp();
+                empDashFun.showDash();
+                break;
+
+            case 3:
+                empDashFun.setTaxToSalary();
                 empDashFun.showDash();
                 break;
 
