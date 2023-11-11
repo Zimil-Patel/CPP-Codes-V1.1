@@ -34,6 +34,13 @@ class ExtraFunctions{
 
     public:
 
+    int internSal = 8000;
+    int juniorSal = 15000;
+    int seniorSal = 30000;
+    int deparmentHeadSal = 45000;
+    int teamLeaderSal = 50000;
+    int cooSal = 70000;
+
     //function for converting string to upper
     string stringToUpper(string oString){
 
@@ -50,21 +57,22 @@ class ExtraFunctions{
         int salary = 0;
 
         if (role == "INTERN")
-            salary = 8000 - ((8000 * tax) / 100) + bonus;
+            salary = internSal - ((internSal * tax) / 100) + bonus;
         else if (role == "JUNIOR STAFFER")
-            salary = 15000 - ((15000 * tax) / 100) + bonus;
+            salary = juniorSal - ((juniorSal * tax) / 100) + bonus;
         else if (role == "SENIOR STAFFER")
-            salary = 30000 - ((30000 * tax) / 100) + bonus;
+            salary = seniorSal - ((seniorSal * tax) / 100) + bonus;
         else if (role == "TEAM LEADER")
-            salary = 45000 - ((45000 * tax) / 100) + bonus;
+            salary = teamLeaderSal - ((teamLeaderSal * tax) / 100) + bonus;
         else if (role == "DEPARTMENT HEAD")
-            salary = 50000 - ((50000 * tax) / 100) + bonus;
+            salary = deparmentHeadSal - ((deparmentHeadSal * tax) / 100) + bonus;
         else if (role == "COO")
-            salary = 70000 - ((70000 * tax) / 100) + bonus;
+            salary = cooSal - ((cooSal * tax) / 100) + bonus;
 
         return salary;
         
     }  
+
 
 };
 
@@ -212,6 +220,80 @@ class EmpDashFunctions{
 
         cin >> bonusOption;
 
+        switch(bonusOption){
+
+            case 1:
+                viewEmpAddBonus();
+                break;
+            
+            case 2:
+                viewRoleAddBonus();
+                break;
+
+            case 3:
+                break;
+
+        }
+
+        cout << endl << "---- Bonus added successfully ----" << endl << endl;
+
+    }
+
+
+    //View all employee and check is there any employee data exists then get bonus amount
+    void viewEmpAddBonus(){
+
+        
+
+    }
+
+
+     //View employee role and get bonus amount
+    void viewRoleAddBonus(){
+
+        int roleOption;
+        int bonusAmt= 0;
+
+        cout << endl << "1. INTERN" <<
+                endl << "2. JUNIOR STAFFER" <<
+                endl << "3. SENIOR STAFFER" <<
+                endl << "4. TEAM LEADER" <<
+                endl << "5. DEPARTMENT HEAD" <<
+                endl << "6. COO";
+
+        cout << endl << endl<< "Which employee role you want to apply bonus : ";
+        cin >> roleOption;
+
+        cout << endl << "Enter Bonus amount : ";
+        cin >> bonusAmt;
+
+        switch(roleOption){
+
+            case 1:
+                addBonusToSalary("INTERN", bonusAmt);
+                break;
+
+            case 2:
+                addBonusToSalary("JUNIR STAFFER", bonusAmt);
+                break;
+
+            case 3:
+                addBonusToSalary("SENIOR STAFFER", bonusAmt);
+                break;
+
+            case 4:
+                addBonusToSalary("TEAM LEADER", bonusAmt);
+                break;
+
+            case 5:
+                addBonusToSalary("DEPARTMENT HEAD", bonusAmt);
+                break;
+
+            case 6:
+                addBonusToSalary("COO", bonusAmt);
+                break;
+        }              
+
     }
 
 
@@ -228,6 +310,22 @@ class EmpDashFunctions{
 
         }
     
+    }
+
+
+    //Add bonus to particular employee role
+    void addBonusToSalary(string role, int bonus){
+
+        for (i = 0; i < 10; i++){
+
+            //Chekcing is there exists an employee
+            if (empData[i].id == 0)
+                break;
+            else
+                empData[i].salary = perform.getEmpSalary(role, tax, bonus);
+
+        }
+
     }
 
 };
