@@ -23,8 +23,9 @@ class EmployeeData{
 
     int id = 0;
     string name;
-    int salary;
+    int salary = 0;
     string role;
+    int empBonus = 0;
 
 };
 
@@ -37,8 +38,8 @@ class ExtraFunctions{
     int internSal = 8000;
     int juniorSal = 15000;
     int seniorSal = 30000;
-    int deparmentHeadSal = 45000;
-    int teamLeaderSal = 50000;
+    int teamLeaderSal = 45000;
+    int deparmentHeadSal = 50000;
     int cooSal = 70000;
 
     //function for converting string to upper
@@ -96,13 +97,15 @@ class EmpDashFunctions{
     //Displaying dashboard and asking choice
     int showDash(){
 
-        cout << endl << "----------- DashBoard -----------  " <<
-                endl << "| 1. Register new employee      |" << 
-                endl << "| 2. View all employees         |" <<
-                endl << "| 3. Set Tax to salary          |" <<
-                endl << "| 4. Set bonus to salary        |" <<
-                endl << "| 5. Exit                       |" <<
-                endl << "--------------------------------- "<<
+        cout << endl << "#---------- DashBoard -----------# " <<
+                endl << "#                                #" << 
+                endl << "#   1. Register new employee     #" << 
+                endl << "#   2. View all employees        #" <<
+                endl << "#   3. Set Tax to salary         #" <<
+                endl << "#   4. Set bonus to salary       #" <<
+                endl << "#   5. Exit                      #" <<
+                endl << "#                                #" << 
+                endl << "# # # # # # # # # # # # ## # # # #"<<
                 endl;
 
         cout << endl << "Enter your option : ";
@@ -135,7 +138,7 @@ class EmpDashFunctions{
                 empData[i].role = perform.stringToUpper(empData[i].role); 
 
                 //fetching employee salary according their role
-                empData[i].salary = perform.getEmpSalary(empData[i].role, tax, bonus);
+                empData[i].salary = perform.getEmpSalary(empData[i].role, tax, empData[i].empBonus);
 
                 cout << endl << "--- Employee added successfully ---" << endl << endl;
 
@@ -159,7 +162,9 @@ class EmpDashFunctions{
 
 
     //View all employee method
-    void viewAllEmp(){
+    int viewAllEmp(){
+
+        int isExist = 0;
 
         cout << endl << "------ All employee Details ------" << endl;
 
@@ -170,25 +175,33 @@ class EmpDashFunctions{
 
                 if (i > 0)
                     break;
-
+                isExist = 0;
                 cout << endl << "There no employee data!" << endl;
                 break;
 
             } else {
 
-                cout << endl << "---------------------------------" << 
-                        endl <<"Employee " << i + 1 <<
-                        endl << "id : " << empData[i].id <<
-                        endl << "name : " << empData[i].name <<
-                        endl << "role : " << empData[i].role <<
-                        endl << "salary : " << empData[i].salary << " Rs.";
+                if (i == 0)
+                    cout << endl << "###### All employee Details ######" << endl;
+
+                isExist = 1;
+                cout << endl << "---------------------------------" <<
+                        endl << "  >>> Employee " << i + 1 <<
+                        endl << "      id : " << empData[i].id <<
+                        endl << "      name : " << empData[i].name <<
+                        endl << "      role : " << empData[i].role <<
+                        endl << "      salary : " << empData[i].salary << " Rs.";
+
+    
 
             }
 
         }
 
-        cout << endl << "---------------------------------" << endl << endl;
+        cout << endl << "---------------------------------" << endl;
+        cout << endl << "#################################" << endl << endl;
 
+        return isExist;
 
     }
 
@@ -199,7 +212,7 @@ class EmpDashFunctions{
         cout << endl << "How much tax you want to apply? : ";
         cin >> tax;
 
-        updateSalary(tax, bonus);
+        updateSalary(tax);
 
         cout << endl << "---- Tax changed successfully ----" << endl << endl;
 
@@ -211,7 +224,7 @@ class EmpDashFunctions{
 
         int bonusOption = 0;
 
-        cout << endl << "How would you like to apply bonus ?" <<
+        cout << endl << "How would you like to apply bonus ?" << endl <<
                 endl << "1. Paricular employee salary" <<
                 endl << "2. Particular employee role" <<
                 endl << "3. All employee salary" <<
@@ -240,10 +253,36 @@ class EmpDashFunctions{
     }
 
 
-    //View all employee and check is there any employee data exists then get bonus amount
+    //View all employee and check is there any employee data exists then add bonus amount
     void viewEmpAddBonus(){
 
-        
+        int isExist = viewAllEmp();
+        int selEmpId = 0, bonusAmt = 0;
+
+        if (isExist){
+
+            cout << endl << "Enter employee's id to whom you want to give bonus : ";
+            cin >> selEmpId;
+
+            cout << endl << "Enter Bonus amount : ";
+            cin >> bonusAmt;
+
+            for (i = 0; i < 10; i++){
+
+                //Chekcing is there exists an employee
+                if (empData[i].id == 0)
+                    break;
+                else{
+
+                    if(empData[i].id == selEmpId){
+                        empData[i].empBonus = bonusAmt;
+                        empData[i].salary = perform.getEmpSalary(empData[i].role, tax, empData[i].empBonus);
+                    }
+                }
+
+            }
+
+        }
 
     }
 
@@ -298,7 +337,7 @@ class EmpDashFunctions{
 
 
     //update employee salary after changes in tax or bonus
-    void updateSalary(float tax, int bonus){
+    void updateSalary(float tax){
 
         for (i = 0; i < 10; i++){
 
@@ -306,7 +345,7 @@ class EmpDashFunctions{
             if (empData[i].id == 0)
                 break;
             else
-                empData[i].salary = perform.getEmpSalary(empData[i].role, tax, bonus);
+                empData[i].salary = perform.getEmpSalary(empData[i].role, tax, empData[i].empBonus);
 
         }
     
@@ -321,9 +360,12 @@ class EmpDashFunctions{
             //Chekcing is there exists an employee
             if (empData[i].id == 0)
                 break;
-            else
-                empData[i].salary = perform.getEmpSalary(role, tax, bonus);
-
+            else{
+                if (empData[i].role == role){
+                    empData[i].empBonus = bonus;
+                    empData[i].salary = perform.getEmpSalary(role, tax, empData[i].empBonus);
+                }
+            }
         }
 
     }
@@ -335,7 +377,7 @@ class EmpDashFunctions{
 int main(){
 
     EmpDashFunctions empDashFun = EmpDashFunctions();
-
+    int isExist = 0;
     //displaying employee managment dashboard
     empDashFun.showDash();
 
@@ -349,7 +391,7 @@ int main(){
                 break;
 
             case 2:
-                empDashFun.viewAllEmp();
+                isExist = empDashFun.viewAllEmp();
                 empDashFun.showDash();
                 break;
 
