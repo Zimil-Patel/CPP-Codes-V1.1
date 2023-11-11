@@ -97,7 +97,7 @@ class EmpDashFunctions{
     //Displaying dashboard and asking choice
     int showDash(){
 
-        cout << endl << "#---------- DashBoard -----------# " <<
+        cout << endl << "#-#-#-#---- Dash-Board ----#-#-#-#" <<
                 endl << "#                                #" << 
                 endl << "#   1. Register new employee     #" << 
                 endl << "#   2. View all employees        #" <<
