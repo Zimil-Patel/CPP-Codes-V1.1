@@ -201,7 +201,16 @@ class EmpDashFunctions{
     //function to make chnages in bonus
     void setBonusToSalary(){
 
-        
+        int bonusOption = 0;
+
+        cout << endl << "How would you like to apply bonus ?" <<
+                endl << "1. Paricular employee salary" <<
+                endl << "2. Particular employee role" <<
+                endl << "3. All employee salary" <<
+                endl <<
+                endl << "Enter your choice : ";
+
+        cin >> bonusOption;
 
     }
 
