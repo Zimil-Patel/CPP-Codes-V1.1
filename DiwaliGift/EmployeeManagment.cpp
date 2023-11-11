@@ -1,9 +1,9 @@
 /* Employee Management system - (sujit-kuldeep),(jaydeep-zimil)
-register
-salary
-tax
+register //done
+salary  //done
+tax     //done
 bonus
-role -- Intern - 8000, 
+role -- Intern - 8000, //done
         Junior staffer - 15000, 
         senior staffer 30000, 
         Team Leader - 45000, 
@@ -92,7 +92,8 @@ class EmpDashFunctions{
                 endl << "| 1. Register new employee      |" << 
                 endl << "| 2. View all employees         |" <<
                 endl << "| 3. Set Tax to salary          |" <<
-                endl << "| 4. Exit                       |" <<
+                endl << "| 4. Set bonus to salary        |" <<
+                endl << "| 5. Exit                       |" <<
                 endl << "--------------------------------- "<<
                 endl;
 
@@ -197,6 +198,14 @@ class EmpDashFunctions{
     }
 
 
+    //function to make chnages in bonus
+    void setBonusToSalary(){
+
+        
+
+    }
+
+
     //update employee salary after changes in tax or bonus
     void updateSalary(float tax, int bonus){
 
@@ -223,7 +232,7 @@ int main(){
     //displaying employee managment dashboard
     empDashFun.showDash();
 
-    while (empDashFun.choice != 4){
+    while (empDashFun.choice != 5){
 
         switch (empDashFun.choice){
 
@@ -239,6 +248,11 @@ int main(){
 
             case 3:
                 empDashFun.setTaxToSalary();
+                empDashFun.showDash();
+                break;
+
+            case 4:
+                empDashFun.setBonusToSalary();
                 empDashFun.showDash();
                 break;
 
