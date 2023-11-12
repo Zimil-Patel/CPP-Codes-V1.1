@@ -244,6 +244,7 @@ class EmpDashFunctions{
                 break;
 
             case 3:
+                addBonusToAllEmp();
                 break;
 
         }
@@ -332,6 +333,26 @@ class EmpDashFunctions{
                 addBonusToSalary("COO", bonusAmt);
                 break;
         }              
+
+    }
+
+
+    //Add bonus to all employee
+    void addBonusToAllEmp(){
+
+        cout << endl << "Enter Bonus amount : ";
+        cin >> bonus;
+
+        for (i = 0; i < 10; i++){
+
+            //check if there exist an employee or not
+            if (empData[i].id == 0)
+                break;
+            else{
+                empData[i].empBonus = bonus;
+                empData[i].salary = perform.getEmpSalary(empData[i].role, tax, empData[i].empBonus);
+            }
+        }
 
     }
 
