@@ -92,6 +92,8 @@ class EmpDashFunctions{
     float tax = 0.0;
 
     int bonus = 0;
+    
+    int isExist = 0;
 
 
     //Displaying dashboard and asking choice
@@ -164,7 +166,7 @@ class EmpDashFunctions{
     //View all employee method
     int viewAllEmp(){
 
-        int isExist = 0;
+        isExist = 0;
 
         for (i = 0; i < 10; i++){
 
@@ -255,7 +257,7 @@ class EmpDashFunctions{
     //View all employee and check is there any employee data exists then add bonus amount
     void viewEmpAddBonus(){
 
-        int isExist = viewAllEmp();
+        isExist = viewAllEmp();
         int selEmpId = 0, bonusAmt = 0;
 
         if (isExist){
@@ -293,46 +295,57 @@ class EmpDashFunctions{
 
         int roleOption;
         int bonusAmt= 0;
+        isExist = checkForEmp();
 
-        cout << endl << "1. INTERN" <<
-                endl << "2. JUNIOR STAFFER" <<
-                endl << "3. SENIOR STAFFER" <<
-                endl << "4. TEAM LEADER" <<
-                endl << "5. DEPARTMENT HEAD" <<
-                endl << "6. COO";
+        if(isExist){
 
-        cout << endl << endl<< "Which employee role you want to apply bonus : ";
-        cin >> roleOption;
+            cout << endl << "1. INTERN" <<
+                    endl << "2. JUNIOR STAFFER" <<
+                    endl << "3. SENIOR STAFFER" <<
+                    endl << "4. TEAM LEADER" <<
+                    endl << "5. DEPARTMENT HEAD" <<
+                    endl << "6. COO";
 
-        cout << endl << "Enter Bonus amount : ";
-        cin >> bonusAmt;
+            cout << endl << endl<< "Which employee role you want to apply bonus : ";
+            cin >> roleOption;
 
-        switch(roleOption){
+            cout << endl << "Enter Bonus amount : ";
+            cin >> bonusAmt;
 
-            case 1:
-                addBonusToSalary("INTERN", bonusAmt);
-                break;
+            switch(roleOption){
 
-            case 2:
-                addBonusToSalary("JUNIR STAFFER", bonusAmt);
-                break;
+                case 1:
+                    addBonusToSalary("INTERN", bonusAmt);
+                    break;
 
-            case 3:
-                addBonusToSalary("SENIOR STAFFER", bonusAmt);
-                break;
+                case 2:
+                    addBonusToSalary("JUNIR STAFFER", bonusAmt);
+                    break;
 
-            case 4:
-                addBonusToSalary("TEAM LEADER", bonusAmt);
-                break;
+                case 3:
+                    addBonusToSalary("SENIOR STAFFER", bonusAmt);
+                    break;
 
-            case 5:
-                addBonusToSalary("DEPARTMENT HEAD", bonusAmt);
-                break;
+                case 4:
+                    addBonusToSalary("TEAM LEADER", bonusAmt);
+                    break;
 
-            case 6:
-                addBonusToSalary("COO", bonusAmt);
-                break;
-        }              
+                case 5:
+                    addBonusToSalary("DEPARTMENT HEAD", bonusAmt);
+                    break;
+
+                case 6:
+                    addBonusToSalary("COO", bonusAmt);
+                    break;
+            }
+
+            cout << endl << "---- Bonus added successfully ----" << endl << endl;
+
+        } else {
+
+            isExist = viewAllEmp();
+
+        }   
 
     }
 
@@ -340,18 +353,30 @@ class EmpDashFunctions{
     //Add bonus to all employee
     void addBonusToAllEmp(){
 
-        cout << endl << "Enter Bonus amount : ";
-        cin >> bonus;
+        isExist = checkForEmp();
 
-        for (i = 0; i < 10; i++){
+        if(isExist){
 
-            //check if there exist an employee or not
-            if (empData[i].id == 0)
-                break;
-            else{
-                empData[i].empBonus = bonus;
-                empData[i].salary = perform.getEmpSalary(empData[i].role, tax, empData[i].empBonus);
+            cout << endl << "Enter Bonus amount : ";
+            cin >> bonus;
+
+            for (i = 0; i < 10; i++){
+
+                //check if there exist an employee or not
+                if (empData[i].id == 0)
+                    break;
+                else{
+                    empData[i].empBonus = bonus;
+                    empData[i].salary = perform.getEmpSalary(empData[i].role, tax, empData[i].empBonus);
+                }
             }
+
+            cout << endl << "---- Bonus added successfully ----" << endl << endl;
+
+        } else {
+
+            isExist = viewAllEmp();
+
         }
 
     }
@@ -391,6 +416,25 @@ class EmpDashFunctions{
 
     }
 
+
+    //check is there an employee exist
+    int checkForEmp(){
+
+        isExist = 0;
+
+        for (i = 0; i < 10; i++){
+
+            if (empData[i].id == 0){
+                isExist = 0;
+                break;
+            } else {
+                isExist = 1;
+                break;
+            }
+        }
+
+        return isExist;
+    }
 };
 
 
