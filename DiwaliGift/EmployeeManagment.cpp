@@ -58,17 +58,17 @@ class ExtraFunctions{
         int salary = 0;
 
         if (role == "INTERN")
-            salary = internSal - ((internSal * tax) / 100) + bonus;
+            salary = internSal - ((internSal * tax) / 30) + bonus;
         else if (role == "JUNIOR STAFFER")
-            salary = juniorSal - ((juniorSal * tax) / 100) + bonus;
+            salary = juniorSal - ((juniorSal * tax) / 30) + bonus;
         else if (role == "SENIOR STAFFER")
-            salary = seniorSal - ((seniorSal * tax) / 100) + bonus;
+            salary = seniorSal - ((seniorSal * tax) / 30) + bonus;
         else if (role == "TEAM LEADER")
-            salary = teamLeaderSal - ((teamLeaderSal * tax) / 100) + bonus;
+            salary = teamLeaderSal - ((teamLeaderSal * tax) / 30) + bonus;
         else if (role == "DEPARTMENT HEAD")
-            salary = deparmentHeadSal - ((deparmentHeadSal * tax) / 100) + bonus;
+            salary = deparmentHeadSal - ((deparmentHeadSal * tax) / 30) + bonus;
         else if (role == "COO")
-            salary = cooSal - ((cooSal * tax) / 100) + bonus;
+            salary = cooSal - ((cooSal * tax) / 30) + bonus;
 
         return salary;
         
@@ -83,11 +83,11 @@ class EmpDashFunctions{
 
     public:
 
-    EmployeeData empData[10];
+    EmployeeData empData[3];
 
     ExtraFunctions perform;
 
-    int choice = 0, i;
+    int choice = 0, i, j;
 
     float tax = 0.0;
 
@@ -105,7 +105,8 @@ class EmpDashFunctions{
                 endl << "#   2. View all employees        #" <<
                 endl << "#   3. Set Tax to salary         #" <<
                 endl << "#   4. Set bonus to salary       #" <<
-                endl << "#   5. Exit                      #" <<
+                endl << "#   5. Fire employee             #" <<
+                endl << "#   6. Exit                      #" <<
                 endl << "#                                #" << 
                 endl << "# # # # # # # # # # # # ## # # # #"<<
                 endl;
@@ -122,7 +123,7 @@ class EmpDashFunctions{
 
         cout << endl << "--- Enter new employee Details ---" << endl;
 
-        for (i = 0; i < 10; i++){
+        for (i = 0; i < 3; i++){
 
             //Chekcing is there is free space to add new employee
             if (empData[i].id == 0){
@@ -168,7 +169,7 @@ class EmpDashFunctions{
 
         isExist = 0;
 
-        for (i = 0; i < 10; i++){
+        for (i = 0; i < 3; i++){
 
             //Chekcing is there exists an employee
             if (empData[i].id == 0){
@@ -254,6 +255,52 @@ class EmpDashFunctions{
     }
 
 
+    //fire an employee
+    void fireEmp(){
+
+        isExist = viewAllEmp();
+        int selEmpId;
+
+        int foundSatus = 0;
+        int atLoc = 0;
+        int lastLoc = 3 - 1;
+
+        if (isExist){
+
+            cout << endl << "Enter employee's id whom you want to fire : ";
+            cin >> selEmpId;
+
+
+            for (i = 0; i < 3; i++){
+
+                if (empData[i].id == 0){
+                    lastLoc = i;
+                    break;
+                } else {
+
+                    if (empData[i].id == selEmpId){
+
+                        foundSatus = 1;
+                        atLoc = i;
+                        break;
+
+                    }
+
+                }
+
+            }
+
+            if (foundSatus){
+                swap(atLoc, lastLoc);
+            } else 
+                cout << endl << "There is no employee with id " << selEmpId << "!" << 
+                endl << endl;
+
+        }
+
+    }
+
+
     //View all employee and check is there any employee data exists then add bonus amount
     void viewEmpAddBonus(){
 
@@ -268,7 +315,7 @@ class EmpDashFunctions{
             cout << endl << "Enter Bonus amount : ";
             cin >> bonusAmt;
 
-            for (i = 0; i < 10; i++){
+            for (i = 0; i < 3; i++){
 
                 //Chekcing is there exists an employee
                 if (empData[i].id == 0)
@@ -360,7 +407,7 @@ class EmpDashFunctions{
             cout << endl << "Enter Bonus amount : ";
             cin >> bonus;
 
-            for (i = 0; i < 10; i++){
+            for (i = 0; i < 3; i++){
 
                 //check if there exist an employee or not
                 if (empData[i].id == 0)
@@ -385,7 +432,7 @@ class EmpDashFunctions{
     //update employee salary after changes in tax or bonus
     void updateSalary(float tax){
 
-        for (i = 0; i < 10; i++){
+        for (i = 0; i < 3; i++){
 
             //Chekcing is there exists an employee
             if (empData[i].id == 0)
@@ -401,7 +448,7 @@ class EmpDashFunctions{
     //Add bonus to particular employee role
     void addBonusToSalary(string role, int bonus){
 
-        for (i = 0; i < 10; i++){
+        for (i = 0; i < 3; i++){
 
             //Chekcing is there exists an employee
             if (empData[i].id == 0)
@@ -422,7 +469,7 @@ class EmpDashFunctions{
 
         isExist = 0;
 
-        for (i = 0; i < 10; i++){
+        for (i = 0; i < 3; i++){
 
             if (empData[i].id == 0){
                 isExist = 0;
@@ -435,6 +482,37 @@ class EmpDashFunctions{
 
         return isExist;
     }
+
+
+    //swap employee data in array
+    void swap(int atLoc, int lastLoc){
+
+        j = 0;
+
+        for (i = atLoc; i <= lastLoc; i++){
+
+            j = i + 1;
+
+            if (j < 3){
+
+                empData[i].id = empData[j].id;
+                empData[i].name = empData[j].name;
+                empData[i].role = empData[j].role;
+                empData[i].empBonus = empData[j].empBonus;
+
+            } else {
+
+                empData[i].id = 0;
+                empData[i].name = "";
+                empData[i].role = "";
+                empData[i].empBonus = 0;
+
+            }
+        }
+
+        cout << endl << "-------- Employee deleted --------" << endl << endl;
+
+    }
 };
 
 
@@ -446,7 +524,7 @@ int main(){
     //displaying employee managment dashboard
     empDashFun.showDash();
 
-    while (empDashFun.choice != 5){
+    while (empDashFun.choice != 6){
 
         switch (empDashFun.choice){
 
@@ -469,6 +547,20 @@ int main(){
                 empDashFun.setBonusToSalary();
                 empDashFun.showDash();
                 break;
+
+            case 5:
+                empDashFun.fireEmp();
+                empDashFun.showDash();
+                break;
+
+            case 6:
+                empDashFun.choice = 6;
+                break;
+
+            default:
+                cout << endl << "Invalid, Enter valid option!";
+                empDashFun.choice = 0;
+                empDashFun.showDash(); 
 
         }
 
