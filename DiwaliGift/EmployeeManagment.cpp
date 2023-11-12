@@ -166,8 +166,6 @@ class EmpDashFunctions{
 
         int isExist = 0;
 
-        cout << endl << "------ All employee Details ------" << endl;
-
         for (i = 0; i < 10; i++){
 
             //Chekcing is there exists an employee
@@ -176,7 +174,8 @@ class EmpDashFunctions{
                 if (i > 0)
                     break;
                 isExist = 0;
-                cout << endl << "There no employee data!" << endl;
+                cout << endl << "##################################" << endl;
+                cout << endl << "   There is no employee data!" << endl;
                 break;
 
             } else {
@@ -198,7 +197,8 @@ class EmpDashFunctions{
 
         }
 
-        cout << endl << "---------------------------------" << endl;
+        if (isExist)
+            cout << endl << "---------------------------------" << endl;
         cout << endl << "#################################" << endl << endl;
 
         return isExist;
@@ -249,8 +249,6 @@ class EmpDashFunctions{
 
         }
 
-        cout << endl << "---- Bonus added successfully ----" << endl << endl;
-
     }
 
 
@@ -282,6 +280,8 @@ class EmpDashFunctions{
                 }
 
             }
+
+            cout << endl << "---- Bonus added successfully ----" << endl << endl;
 
         }
 
