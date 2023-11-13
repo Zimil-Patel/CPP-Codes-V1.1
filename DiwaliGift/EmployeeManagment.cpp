@@ -128,8 +128,7 @@ class EmpDashFunctions{
             //Chekcing is there is free space to add new employee
             if (empData[i].id == 0){
 
-                cout << endl << "Employee id : ";
-                cin >> empData[i].id;
+                empData[i].id = getUniqueId();
 
                 cout << "Employee name : ";
                 getline(cin >> ws, empData[i].name);
@@ -163,6 +162,41 @@ class EmpDashFunctions{
 
     }
 
+
+    //verify that user enetered unique employee id
+    int getUniqueId(){
+
+        int isUnique = 1;
+        int id = 0;
+
+        cout << endl << "Employee id : ";
+        cin >> id;
+
+        //check given id is valid or not
+        for (i = 0; i < 10; i++){
+        
+            if (i == 0 && empData[i].id == 0){
+
+                isUnique = 1;
+                break;
+
+            } else if (empData[i].id != 0 && id == empData[i].id){
+
+                isUnique = 0;
+                break;
+
+            }
+
+            if (isUnique)
+                return id;
+            else{
+                cout << endl << "Invalid! Enter unique id" << endl;
+                getUniqueId();
+            }       
+             
+        }
+
+    }
 
     //View all employee method
     int viewAllEmp(){
