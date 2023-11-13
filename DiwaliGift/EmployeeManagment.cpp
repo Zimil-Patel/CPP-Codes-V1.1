@@ -5,7 +5,7 @@ tax     //done
 bonus
 role -- Intern - 8000, //done
         Junior staffer - 15000, 
-        senior staffer 30000, 
+        senior staffer empListSize0000, 
         Team Leader - 45000, 
         Deparment head - 50000, 
         COO(cheif oeprating officer) - 70000
@@ -58,17 +58,17 @@ class ExtraFunctions{
         int salary = 0;
 
         if (role == "INTERN")
-            salary = internSal - ((internSal * tax) / 30) + bonus;
+            salary = internSal - ((internSal * tax) / 100) + bonus;
         else if (role == "JUNIOR STAFFER")
-            salary = juniorSal - ((juniorSal * tax) / 30) + bonus;
+            salary = juniorSal - ((juniorSal * tax) / 100) + bonus;
         else if (role == "SENIOR STAFFER")
-            salary = seniorSal - ((seniorSal * tax) / 30) + bonus;
+            salary = seniorSal - ((seniorSal * tax) / 100) + bonus;
         else if (role == "TEAM LEADER")
-            salary = teamLeaderSal - ((teamLeaderSal * tax) / 30) + bonus;
+            salary = teamLeaderSal - ((teamLeaderSal * tax) / 100) + bonus;
         else if (role == "DEPARTMENT HEAD")
-            salary = deparmentHeadSal - ((deparmentHeadSal * tax) / 30) + bonus;
+            salary = deparmentHeadSal - ((deparmentHeadSal * tax) / 100) + bonus;
         else if (role == "COO")
-            salary = cooSal - ((cooSal * tax) / 30) + bonus;
+            salary = cooSal - ((cooSal * tax) / 100) + bonus;
 
         return salary;
         
@@ -83,7 +83,7 @@ class EmpDashFunctions{
 
     public:
 
-    EmployeeData empData[3];
+    EmployeeData empData[empListSize];
 
     ExtraFunctions perform;
 
@@ -103,7 +103,7 @@ class EmpDashFunctions{
                 endl << "#                                #" << 
                 endl << "#   1. Register new employee     #" << 
                 endl << "#   2. View all employees        #" <<
-                endl << "#   3. Set Tax to salary         #" <<
+                endl << "#   empListSize. Set Tax to salary         #" <<
                 endl << "#   4. Set bonus to salary       #" <<
                 endl << "#   5. Fire employee             #" <<
                 endl << "#   6. Exit                      #" <<
@@ -123,7 +123,7 @@ class EmpDashFunctions{
 
         cout << endl << "--- Enter new employee Details ---" << endl;
 
-        for (i = 0; i < 3; i++){
+        for (i = 0; i < empListSize; i++){
 
             //Chekcing is there is free space to add new employee
             if (empData[i].id == 0){
@@ -169,7 +169,7 @@ class EmpDashFunctions{
 
         isExist = 0;
 
-        for (i = 0; i < 3; i++){
+        for (i = 0; i < empListSize; i++){
 
             //Chekcing is there exists an employee
             if (empData[i].id == 0){
@@ -230,7 +230,7 @@ class EmpDashFunctions{
         cout << endl << "How would you like to apply bonus ?" << endl <<
                 endl << "1. Paricular employee salary" <<
                 endl << "2. Particular employee role" <<
-                endl << "3. All employee salary" <<
+                endl << "empListSize. All employee salary" <<
                 endl <<
                 endl << "Enter your choice : ";
 
@@ -263,7 +263,7 @@ class EmpDashFunctions{
 
         int foundSatus = 0;
         int atLoc = 0;
-        int lastLoc = 3 - 1;
+        int lastLoc = empListSize - 1;
 
         if (isExist){
 
@@ -271,7 +271,7 @@ class EmpDashFunctions{
             cin >> selEmpId;
 
 
-            for (i = 0; i < 3; i++){
+            for (i = 0; i < empListSize; i++){
 
                 if (empData[i].id == 0){
                     lastLoc = i;
@@ -315,7 +315,7 @@ class EmpDashFunctions{
             cout << endl << "Enter Bonus amount : ";
             cin >> bonusAmt;
 
-            for (i = 0; i < 3; i++){
+            for (i = 0; i < empListSize; i++){
 
                 //Chekcing is there exists an employee
                 if (empData[i].id == 0)
@@ -407,7 +407,7 @@ class EmpDashFunctions{
             cout << endl << "Enter Bonus amount : ";
             cin >> bonus;
 
-            for (i = 0; i < 3; i++){
+            for (i = 0; i < empListSize; i++){
 
                 //check if there exist an employee or not
                 if (empData[i].id == 0)
@@ -432,7 +432,7 @@ class EmpDashFunctions{
     //update employee salary after changes in tax or bonus
     void updateSalary(float tax){
 
-        for (i = 0; i < 3; i++){
+        for (i = 0; i < empListSize; i++){
 
             //Chekcing is there exists an employee
             if (empData[i].id == 0)
@@ -448,7 +448,7 @@ class EmpDashFunctions{
     //Add bonus to particular employee role
     void addBonusToSalary(string role, int bonus){
 
-        for (i = 0; i < 3; i++){
+        for (i = 0; i < empListSize; i++){
 
             //Chekcing is there exists an employee
             if (empData[i].id == 0)
@@ -469,7 +469,7 @@ class EmpDashFunctions{
 
         isExist = 0;
 
-        for (i = 0; i < 3; i++){
+        for (i = 0; i < empListSize; i++){
 
             if (empData[i].id == 0){
                 isExist = 0;
@@ -493,7 +493,7 @@ class EmpDashFunctions{
 
             j = i + 1;
 
-            if (j < 3){
+            if (j < empListSize){
 
                 empData[i].id = empData[j].id;
                 empData[i].name = empData[j].name;
