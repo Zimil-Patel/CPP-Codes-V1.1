@@ -23,6 +23,7 @@ class EmployeeData{
 
     int id = 0;
     string name;
+    int age = 0;
     int salary = 0;
     string role;
     int empBonus = 0;
@@ -128,10 +129,14 @@ class EmpDashFunctions{
             //Chekcing is there is free space to add new employee
             if (empData[i].id == 0){
 
-                empData[i].id = getUniqueId();
+                cout << endl << "Employee id : ";
+                cin >> empData[i].id;
 
                 cout << "Employee name : ";
                 getline(cin >> ws, empData[i].name);
+
+                cout << "Employee age : ";
+                cin >> empData[i].age;
 
                 cout << "Employee role : ";
                 getline(cin >> ws, empData[i].role);
@@ -144,7 +149,8 @@ class EmpDashFunctions{
 
                 cout << endl << "--- Employee added successfully ---" << endl << endl;
 
-                break;
+                break;     
+                
 
             } else {
 
@@ -162,41 +168,6 @@ class EmpDashFunctions{
 
     }
 
-
-    //verify that user enetered unique employee id
-    int getUniqueId(){
-
-        int isUnique = 1;
-        int id = 0;
-
-        cout << endl << "Employee id : ";
-        cin >> id;
-
-        //check given id is valid or not
-        for (i = 0; i < 10; i++){
-        
-            if (i == 0 && empData[i].id == 0){
-
-                isUnique = 1;
-                break;
-
-            } else if (empData[i].id != 0 && id == empData[i].id){
-
-                isUnique = 0;
-                break;
-
-            }
-
-            if (isUnique)
-                return id;
-            else{
-                cout << endl << "Invalid! Enter unique id" << endl;
-                getUniqueId();
-            }       
-             
-        }
-
-    }
 
     //View all employee method
     int viewAllEmp(){
@@ -225,6 +196,7 @@ class EmpDashFunctions{
                         endl << "  >>> Employee " << i + 1 <<
                         endl << "      id : " << empData[i].id <<
                         endl << "      name : " << empData[i].name <<
+                        endl << "      age : " << empData[i].age <<
                         endl << "      role : " << empData[i].role <<
                         endl << "      salary : " << empData[i].salary << " Rs.";
 
