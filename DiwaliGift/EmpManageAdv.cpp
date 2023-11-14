@@ -13,6 +13,9 @@
 
 /* todo : 1
 
+showTitle();
+->display employee management Title
+
 adminLogin();
 ->getUsernamePass;
 ->verify and login;
@@ -26,12 +29,15 @@ adminLogin();
 #include<iostream>
 using namespace std;
 
+
+//display employee managment title
 void showTitle(){
 
-    cout << endl << "" << 
-            endl << "" << 
-            endl << "" <<
-            endl << "" <<
+    cout << endl << "# #  # # # # # # # # # # # # # # # #" << 
+            endl << "#                                  #" << 
+            endl << "#\t\tEMPLOYEE MANAGMENT SYSTEM\t\t #" <<
+            endl << "#                                  #" <<
+            endl << "# #  # # # # # # # # # # # # # # # #" <<
             endl;
 
 }
@@ -53,6 +59,7 @@ class AdminLogin{
 void AdminLogin :: adminLogin()
 {
 
+    showTitle();
     string username, pass;
 
 }
