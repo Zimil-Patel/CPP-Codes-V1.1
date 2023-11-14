@@ -26,7 +26,10 @@ adminLogin();
 
 */
 
-#include<iostream>
+#include <iostream>
+#include <unistd.h>
+
+using namespace std;
 using namespace std;
 
 
@@ -55,17 +58,62 @@ class AdminLogin{
 
 };
 
+
 //all AdminLogin class's functions defination are defined here...
 void AdminLogin :: adminLogin()
 {
 
     showTitle();
-    string username, pass;
+    string userName, pass;
 
     cout << endl << "-------------------------------------------" <<
             endl << "- - - - - - - - Admin Login - - - - - - - -" <<
             endl << "-------------------------------------------" <<
             endl;
+
+
+    //getting userNane and password from user
+    cout << endl << ">>    Enter user name : ";
+    getline(cin >> ws, userName);
+
+    cout << ">>    Enter password : ";
+    getline(cin >> ws, pass);
+
+
+    //animated logining screen
+    cout << endl << endl << "             | Loging in |" << 
+            endl << "             ";
+
+    for (int i = 0; i < 4; i++){
+
+        sleep(1);
+        cout << "...";
+
+    }
+
+    cout << endl;
+
+    //if user verified successfully redirect admin to dash board
+    if (userName == adminUserName && pass == adminPass){
+
+        cout << endl << ">> - - - - - Login Successful - - - - - <<" << 
+                endl << endl;
+
+        system("pause");
+        system("cls");
+
+    } else {
+
+        cout << endl << ">> - - Invalid! username or password- - <<" <<
+                endl << endl;
+
+        system("pause");
+        system("cls");
+        adminLogin();
+
+    }
+
+
 
 }
 
