@@ -33,11 +33,11 @@ using namespace std;
 //display employee managment title
 void showTitle(){
 
-    cout << endl << "# #  # # # # # # # # # # # # # # # #" << 
-            endl << "#                                  #" << 
-            endl << "#\t\tEMPLOYEE MANAGMENT SYSTEM\t\t #" <<
-            endl << "#                                  #" <<
-            endl << "# #  # # # # # # # # # # # # # # # #" <<
+    cout << endl << "# # # # # # # # # # # # # # # # # # # # # #" << 
+            endl << "#                                         #" << 
+            endl << "#       EMPLOYEE MANAGMENT SYSTEM         #" <<
+            endl << "#                                         #" <<
+            endl << "# # # # # # # # # # # # # # # # # # # # # #" <<
             endl;
 
 }
@@ -61,6 +61,11 @@ void AdminLogin :: adminLogin()
 
     showTitle();
     string username, pass;
+
+    cout << endl << "-------------------------------------------" <<
+            endl << "- - - - - - - - Admin Login - - - - - - - -" <<
+            endl << "-------------------------------------------" <<
+            endl;
 
 }
 
