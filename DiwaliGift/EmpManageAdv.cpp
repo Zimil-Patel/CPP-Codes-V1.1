@@ -10,7 +10,6 @@
     ->modify employee role;
 */
 
-
 /* todo : 1
 
 showTitle();
@@ -32,100 +31,140 @@ adminLogin();
 using namespace std;
 using namespace std;
 
+// display employee managment title
+void showTitle()
+{
 
-//display employee managment title
-void showTitle(){
-
-    cout << endl << "# # # # # # # # # # # # # # # # # # # # # #" << 
-            endl << "#                                         #" << 
-            endl << "#       EMPLOYEE MANAGMENT SYSTEM         #" <<
-            endl << "#                                         #" <<
-            endl << "# # # # # # # # # # # # # # # # # # # # # #" <<
-            endl;
-
+    cout << endl
+         << "# # # # # # # # # # # # # # # # # # # # # #" << endl
+         << "#                                         #" << endl
+         << "#       EMPLOYEE MANAGMENT SYSTEM         #" << endl
+         << "#                                         #" << endl
+         << "# # # # # # # # # # # # # # # # # # # # # #" << endl;
 }
 
+// all admin realated attribute and function are stored here
+class AdminLogin
+{
 
-//all admin realated attribute and function are stored here
-class AdminLogin{
-
-    private:
+private:
     string adminUserName = "admin";
     string adminPass = "1234";
 
-    public:
-    void adminLogin();
-
+public:
+    int adminLogin();
 };
 
+// all dash attributes and functions are stored here
+class DashFunctions
+{
 
-//all AdminLogin class's functions defination are defined here...
-void AdminLogin :: adminLogin()
+public:
+    void showDash();
+};
+
+// all AdminLogin class's functions defination are defined here...
+int AdminLogin ::adminLogin()
 {
 
     showTitle();
     string userName, pass;
 
-    cout << endl << "-------------------------------------------" <<
-            endl << "- - - - - - - - Admin Login - - - - - - - -" <<
-            endl << "-------------------------------------------" <<
-            endl;
+    cout << endl
+         << "-------------------------------------------" << endl
+         << "- - - - - - - - Admin Login - - - - - - - -" << endl
+         << "-------------------------------------------" << endl;
 
-
-    //getting userNane and password from user
-    cout << endl << ">>    Enter user name : ";
+    // getting userNane and password from user
+    cout << endl
+         << ">>    Enter user name : ";
     getline(cin >> ws, userName);
 
     cout << ">>    Enter password : ";
     getline(cin >> ws, pass);
 
+    // animated logining screen
+    cout << endl
+         << endl
+         << "             | Loging in |" << endl
+         << "             ";
 
-    //animated logining screen
-    cout << endl << endl << "             | Loging in |" << 
-            endl << "             ";
-
-    for (int i = 0; i < 4; i++){
+    for (int i = 0; i < 4; i++)
+    {
 
         sleep(1);
         cout << "...";
-
     }
 
     cout << endl;
 
-    //if user verified successfully redirect admin to dash board
-    if (userName == adminUserName && pass == adminPass){
+    // if user verified successfully redirect admin to dash board
+    if (userName == adminUserName && pass == adminPass)
+    {
 
-        cout << endl << ">> - - - - - Login Successful - - - - - <<" << 
-                endl << endl;
+        cout << endl
+             << ">> - - - - - Login Successful - - - - - <<" << endl
+             << endl;
 
         system("pause");
         system("cls");
+        return 1;
+    }
+    else
+    {
 
-    } else {
-
-        cout << endl << ">> - - Invalid! username or password- - <<" <<
-                endl << endl;
+        cout << endl
+             << ">> - - Invalid! username or password- - <<" << endl
+             << endl;
 
         system("pause");
         system("cls");
         adminLogin();
-
     }
-
-
-
 }
 
+// display different options to user and asking which operation admin want to perform
+void DashFunctions ::showDash()
+{
 
-//main method
-int main(){
+    showTitle();
+
+    cout << endl
+         << "-------------------------------------------" << endl
+         << "- - - - - - - - Dash  Board - - - - - - - -" << endl
+         << "-------------------------------------------" << endl;
+
+    int choice;
+
+    cout << endl
+         << "#-#-#-#-#-#-#--- Dash-Board ---#-#-#-#-#-#-#" << endl
+         << "#                                          #" << endl
+         << "#       1. Register new employee           #" << endl
+         << "#       2. View all employees              #" << endl
+         << "#       3. Set Tax to salary               #" << endl
+         << "#       4. Set bonus to salary             #" << endl
+         << "#       5. Fire employee                   #" << endl
+         << "#       6. Logout & Exit                   #" << endl
+         << "#                                          #" << endl
+         << "# # # # # # # # # # # # ## # # # # # # # # #" << endl;
+}
+
+// main method
+int main()
+{
 
     AdminLogin adminFun;
+    DashFunctions dashfun;
 
-    adminFun.adminLogin(); //perform admin login operation 
+    // calling adminLogin();
+    int loginStatus = adminFun.adminLogin();
+
+    while (loginStatus)
+    {
+
+        // calling showDash(); function
+        dashfun.showDash();
+    }
 
     return 0;
 }
-
-
