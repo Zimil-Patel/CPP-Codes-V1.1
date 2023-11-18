@@ -191,6 +191,24 @@ private:
     
     }
 
+    //update salary after adding bonus to particular employee role
+    void addBonusToSalary(string role, int bonus){
+
+        for (int i = 0; i < 10; i++){
+
+            //Chekcing is there exists an employee
+            if (emp[i].getId() == 0)
+                break;
+            else{
+                if (emp[i].getRole() == role){
+                    emp[i].setBonus(bonus);
+                    emp[i].setSalary( getEmpSalary(emp[i].getRole(), tax, emp[i].getBonus()) );
+                }
+            }
+        }
+
+    }
+
     //add bonus to particular employee
     void viewEmpAddBonus(){
 
@@ -230,10 +248,93 @@ private:
     }
 
     //add bonus to particular employee role
-    void viewRoleAddBonus(){}
+    void viewRoleAddBonus(){
+
+        int roleOption;
+        int bonusAmt= 0;
+        
+        viewEmp();
+
+        if(isExistEmp){
+
+            cout << endl << "1. INTERN" <<
+                    endl << "2. JUNIOR STAFFER" <<
+                    endl << "3. SENIOR STAFFER" <<
+                    endl << "4. TEAM LEADER" <<
+                    endl << "5. DEPARTMENT HEAD" <<
+                    endl << "6. COO";
+
+            cout << endl << endl<< ">>      Which employee role you want to apply bonus? [1/2/3/4/5/6] : ";
+            cin >> roleOption;
+
+            cout << endl << ">>      Enter Bonus amount : ";
+            cin >> bonusAmt;
+
+            switch(roleOption){
+
+                case 1:
+                    addBonusToSalary("INTERN", bonusAmt);
+                    break;
+
+                case 2:
+                    addBonusToSalary("JUNIR STAFFER", bonusAmt);
+                    break;
+
+                case 3:
+                    addBonusToSalary("SENIOR STAFFER", bonusAmt);
+                    break;
+
+                case 4:
+                    addBonusToSalary("TEAM LEADER", bonusAmt);
+                    break;
+
+                case 5:
+                    addBonusToSalary("DEPARTMENT HEAD", bonusAmt);
+                    break;
+
+                case 6:
+                    addBonusToSalary("COO", bonusAmt);
+                    break;
+            }
+
+            cout << endl << ">> - - -Bonus added successfully- - - <<" <<
+                    endl << endl;
+
+        } else {
+
+            cout << endl << endl;
+
+        }
+
+    }
 
     //add bonus to all employee
-    void addBonusToAllEmp(){}
+    void addBonusToAllEmp(){
+
+        viewEmp();
+
+        if(isExistEmp){
+
+            cout << endl << "Enter Bonus amount : ";
+            cin >> bonus;
+
+            for (int i = 0; i < 10; i++){
+
+                //check if there exist an employee or not
+                if (emp[i].getId() == 0)
+                    break;
+                else{
+                    emp[i].setBonus (bonus);
+                    emp[i].setSalary( getEmpSalary(emp[i].getRole(), tax, emp[i].getBonus()) );
+                }
+            }
+
+            cout << endl << ">> - - -Bonus added successfully- - - <<" <<
+                    endl << endl;
+
+        }
+
+    }
 
 public:
     int showDash();
