@@ -120,6 +120,9 @@ public:
     //update employee salary
     void setSalary(int sal){salary = sal;}
 
+    //ypdate employee bonus
+    void setBonus(int updatedBonus){bonus = updatedBonus;}
+
 };
 
 // all dash attributes and functions are stored here
@@ -204,11 +207,57 @@ private:
     
     }
 
+    //add bonus to particular employee
+    void viewEmpAddBonus(){
+
+        viewEmp();
+
+        int selEmpId = 0, bonusAmt = 0;
+
+        if (isExistEmp){
+
+            cout << endl << ">>      Enter employee's id to whom you want to give bonus : ";
+            cin >> selEmpId;
+
+            cout << endl << ">>      Enter Bonus amount : ";
+            cin >> bonusAmt;
+
+            for (int i = 0; i < 3; i++){
+
+                //Chekcing is there exists an employee
+                if (emp[i].getId() == 0)
+                    break;
+                else{
+
+                    if(emp[i].getId() == selEmpId){
+                        emp[i].setBonus(bonusAmt);
+                        emp[i].setSalary( getEmpSalary(emp[i].getRole(), tax, emp[i].getBonus()) );
+                    }
+
+                }
+
+            }
+
+            cout << endl << ">> - - -Bonus added successfully- - - <<" <<
+                    endl << endl;
+
+        }
+
+    }
+
+    //add bonus to particular employee role
+    void viewRoleAddBonus(){}
+
+    //add bonus to all employee
+    void addBonusToAllEmp(){}
+
 public:
     int showDash();
     void registerEmp();
     void viewEmp();
     void setTax();
+    void setBonus();
+
 };
 
 // all AdminLogin class's functions defination are defined here...
@@ -324,6 +373,9 @@ int DashFunctions :: showDash()
 
         //4. Set bonus to salary 
         case 4:
+            showTitle();
+            setBonus();
+            system("pause");
             break;
 
         //5. Fire employee
@@ -455,7 +507,7 @@ void DashFunctions :: setTax(){
 
     cout << endl
          << "-------------------------------------------" << endl
-         << "- - - - - - -All Employee Data- - - - - - -" << endl
+         << "- - - - - - - - - - Tax - - - - - - - - - -" << endl
          << "-------------------------------------------" << endl;
 
     cout << endl << "How much tax you want to apply? : ";
@@ -467,6 +519,45 @@ void DashFunctions :: setTax(){
             endl << endl;
 
 }
+
+//function to make chnages in bonus
+void DashFunctions :: setBonus()
+{
+
+    cout << endl
+         << "-------------------------------------------" << endl
+         << "- - - - - - - - - -Bonus- - - - - - - - - -" << endl
+         << "-------------------------------------------" << endl;
+
+    int bonusOption = 0;
+
+    cout << endl << "How would you like to apply bonus ?" << 
+            endl << 
+            endl << "1. Paricular employee salary" << 
+            endl << "2. Particular employee role" << 
+            endl << "3. All employee salary" << 
+            endl << endl << "Enter choice [1/2/3] : ";
+
+    cin >> bonusOption;
+
+    switch (bonusOption)
+    {
+
+    case 1:
+        viewEmpAddBonus();
+        break;
+
+    case 2:
+        viewRoleAddBonus();
+        break;
+
+    case 3:
+        addBonusToAllEmp();
+        break;
+    }
+}
+
+
 
 // main method
 int main()
