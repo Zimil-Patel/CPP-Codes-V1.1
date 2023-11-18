@@ -43,6 +43,17 @@ void showTitle()
          << "# # # # # # # # # # # # # # # # # # # # # #" << endl;
 }
 
+//function for converting string to upper
+string stringToUpper(string oString)
+{
+
+    for (int i = 0; i < oString.length(); i++)
+    {
+        oString[i] = toupper(oString[i]);
+    }
+    return oString;
+}
+
 // all admin realated attribute and function are stored here
 class AdminLogin
 {
@@ -100,6 +111,15 @@ public:
     //get employee private data
     int getId(){return id;}
 
+    //get employee role
+    string getRole(){return role;}
+
+    //get employee bonus
+    int getBonus(){return bonus;}
+
+    //update employee salary
+    void setSalary(int sal){salary = sal;}
+
 };
 
 // all dash attributes and functions are stored here
@@ -114,6 +134,12 @@ private:
     int id, age, exp, sal, bonus;
     string name, role, city;
     int tax = 0, uniBonus = 0;
+    int internSal = 8000;
+    int juniorSal = 15000;
+    int seniorSal = 30000;
+    int teamLeaderSal = 45000;
+    int deparmentHeadSal = 50000;
+    int cooSal = 70000;
 
     //check if there exist and employee in employee list
     void checkIfExist(){
@@ -135,10 +161,54 @@ private:
 
     }
 
+    //function to decide employee salary according thier role
+    int getEmpSalary(string role, float tax, int bonus){
+
+        int salary = 0;
+
+        if (role == "INTERN")
+            salary = internSal - ((internSal * tax) / 100) + bonus;
+        else if (role == "JUNIOR STAFFER")
+            salary = juniorSal - ((juniorSal * tax) / 100) + bonus;
+        else if (role == "SENIOR STAFFER")
+            salary = seniorSal - ((seniorSal * tax) / 100) + bonus;
+        else if (role == "TEAM LEADER")
+            salary = teamLeaderSal - ((teamLeaderSal * tax) / 100) + bonus;
+        else if (role == "DEPARTMENT HEAD")
+            salary = deparmentHeadSal - ((deparmentHeadSal * tax) / 100) + bonus;
+        else if (role == "COO")
+            salary = cooSal - ((cooSal * tax) / 100) + bonus;
+
+        return salary;
+        
+    }
+
+    //update salary of employee
+    void updateSalary(float tax){
+
+        checkIfExist();
+        
+        if (isExistEmp){
+
+            for (int i = 0; i < 10; i++){
+
+                //Chekcing is there exists an employee
+                if (emp[i].getId() == 0)
+                    break;
+                else
+                    emp[i].setSalary( getEmpSalary(emp[i].getRole(), tax, emp[i].getBonus()) );
+
+            }
+
+        }
+    
+    }
+
 public:
     int showDash();
     void registerEmp();
     void viewEmp();
+    void setTax();
 };
 
 // all AdminLogin class's functions defination are defined here...
@@ -247,6 +317,9 @@ int DashFunctions :: showDash()
 
         //3. Set Tax to salary 
         case 3:
+            showTitle();
+            setTax();
+            system("pause");
             break;
 
         //4. Set bonus to salary 
@@ -312,16 +385,19 @@ void DashFunctions :: registerEmp(){
 
             cout << ">>    role : ";
             getline(cin >> ws, role);
+            role = stringToUpper(role);
 
             cout << ">>    city : ";
             getline(cin >> ws, city);
+
+            sal = getEmpSalary(role, tax, 0);
 
             for (int i = 0; i < 3; i++)
             {
 
                 if (emp[i].getId() == 0)
                 {
-                    emp[i].ValueSetter(id, name, age, exp, role, 0, 0, city);
+                    emp[i].ValueSetter(id, name, age, exp, role, sal, 0, city);
                     break;
                 }
 
@@ -354,9 +430,13 @@ void DashFunctions :: viewEmp(){
 
         for (int i = 0; i < 3; i++)
             if (emp[i].getId() != 0){
+                
+                if (emp[i].getId() != 0){
 
-                cout << endl << ">> Employee " << i + 1;
-                emp[i].display();
+                    cout << endl << ">> Employee " << i + 1;
+                    emp[i].display();
+
+                }
 
             }
 
@@ -367,6 +447,24 @@ void DashFunctions :: viewEmp(){
     }
 
     cout << endl;
+
+}
+
+//this function used to get tax from user and apply it to employee salary
+void DashFunctions :: setTax(){
+
+    cout << endl
+         << "-------------------------------------------" << endl
+         << "- - - - - - -All Employee Data- - - - - - -" << endl
+         << "-------------------------------------------" << endl;
+
+    cout << endl << "How much tax you want to apply? : ";
+    cin >> tax;
+
+    updateSalary(tax);
+
+    cout << endl << ">> - - -Tax applied successfully- - - <<" << 
+            endl << endl;
 
 }
 
