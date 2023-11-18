@@ -113,6 +113,7 @@ private:
     char repeat;
     int id, age, exp, sal, bonus;
     string name, role, city;
+    int tax = 0, uniBonus = 0;
 
     //check if there exist and employee in employee list
     void checkIfExist(){
@@ -326,14 +327,16 @@ void DashFunctions :: registerEmp(){
 
             }
 
-            cout << endl << ">> - - - - Employee Registered - - - - <<" << endl
-                << endl;
+            cout << endl << ">> - - - - Employee Registered - - - - <<" << 
+                    endl;
         }
 
         cout << endl << ">>    Do you want to add another? [y/n]: ";
         cin >> repeat;
 
     } while(repeat == 'y' || repeat == 'Y');
+
+    cout << endl;
 
 }
 
