@@ -60,7 +60,7 @@ class DashFunctions
 {
 
 public:
-    void showDash();
+    int showDash();
 };
 
 // all AdminLogin class's functions defination are defined here...
@@ -102,9 +102,8 @@ int AdminLogin ::adminLogin()
     if (userName == adminUserName && pass == adminPass)
     {
 
-        cout << endl
-             << ">> - - - - - Login Successful - - - - - <<" << endl
-             << endl;
+        cout << endl << ">> - - - - - Login Successful - - - - - <<" << 
+                endl << endl;
 
         system("pause");
         system("cls");
@@ -113,9 +112,8 @@ int AdminLogin ::adminLogin()
     else
     {
 
-        cout << endl
-             << ">> - - Invalid! username or password- - <<" << endl
-             << endl;
+        cout << endl << ">> - - Invalid! username or password- - <<" << 
+                endl << endl;
 
         system("pause");
         system("cls");
@@ -124,7 +122,7 @@ int AdminLogin ::adminLogin()
 }
 
 // display different options to user and asking which operation admin want to perform
-void DashFunctions ::showDash()
+int DashFunctions ::showDash()
 {
 
     showTitle();
@@ -147,6 +145,49 @@ void DashFunctions ::showDash()
          << "#       6. Logout & Exit                   #" << endl
          << "#                                          #" << endl
          << "# # # # # # # # # # # # ## # # # # # # # # #" << endl;
+
+    // getting choice from user
+    cout << endl
+         << ">>    Enter your choice [1/2/3/4/5/6] : ";
+    cin >> choice;
+
+    switch(choice){
+
+        //1. Register new employee
+        case 1:
+            break;
+
+        //2. View all employees   
+        case 2:
+            break;
+
+        //3. Set Tax to salary 
+        case 3:
+            break;
+
+        //4. Set bonus to salary 
+        case 4:
+            break;
+
+        //5. Fire employee
+        case 5:
+            break;
+
+        //6. Logout & Exit
+        case 6:
+            return 0;
+            cout << endl << ">> - - - - - Logout Successful - - - - <<" << 
+                    endl << endl;
+            break;
+
+        //when user enter invalid option
+        default:
+            cout << endl << ">> - - Invalid! Enter valid choice - - <<" 
+                 << endl << endl;
+
+    }
+
+    return 1;
 }
 
 // main method
@@ -163,7 +204,7 @@ int main()
     {
 
         // calling showDash(); function
-        dashfun.showDash();
+        loginStatus = dashfun.showDash();
     }
 
     return 0;
