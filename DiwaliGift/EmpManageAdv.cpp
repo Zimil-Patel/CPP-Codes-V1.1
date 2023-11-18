@@ -95,17 +95,38 @@ public:
     //get employee private data
     int getId(){return id;}
 
-    //get employee role
+    string getName(){return name;}
+
+    int getAge(){return age;}
+
+    string getCity(){return city;}
+
     string getRole(){return role;}
 
-    //get employee bonus
+    int getExperience(){return experience;}
+
+    int getSalary(){return salary;}
+
     int getBonus(){return bonus;}
 
-    //update employee salary
-    void setSalary(int sal){salary = sal;}
+    //update employee private data
+    void setId(int newId){id = newId;}
 
-    //ypdate employee bonus
-    void setBonus(int updatedBonus){bonus = updatedBonus;}
+    void setName(string newName){name = newName;}
+
+    void setAge(int newAge){age = newAge;}
+
+    void setCity(string newCity){city = newCity;}
+
+    void setRole(string newRole){role = newRole;}
+
+    void setExperience(int newExp){experience = newExp;}
+
+    void setSalary(int newSal){salary = newSal;}
+
+    void setBonus(int newBonus){bonus = newBonus;}
+
+
 
 };
 
@@ -120,7 +141,8 @@ private:
     char repeat;
     int id, age, exp, sal, bonus;
     string name, role, city;
-    int tax = 0, uniBonus = 0;
+    float tax = 0; 
+    int uniBonus = 0;
     int internSal = 8000;
     int juniorSal = 15000;
     int seniorSal = 30000;
@@ -336,12 +358,52 @@ private:
 
     }
 
+    //swap employee data in array
+    void swap(int atLoc, int lastLoc){
+
+        int j = 0;
+
+        for (int i = atLoc; i <= lastLoc; i++){
+
+            j = i + 1;
+
+            if (j < 10){
+
+                emp[i].setId(emp[j].getId()); 
+                emp[i].setName(emp[j].getName());
+                emp[i].setAge(emp[j].getAge());
+                emp[i].setCity(emp[j].getCity());
+                emp[i].setRole(emp[j].getRole());
+                emp[i].setExperience(emp[j].getExperience());
+                emp[i].setSalary(emp[j].getSalary());
+                emp[i].setBonus(emp[j].getBonus());
+
+            } else {
+
+                emp[i].setId(0);
+                emp[i].setName("");
+                emp[i].setAge(0);
+                emp[i].setCity("");
+                emp[i].setRole("");
+                emp[i].setExperience(0);
+                emp[i].setSalary(0);
+                emp[i].setBonus(0);
+
+            }
+        }
+
+        cout << endl << ">> - - - - - Employee Deleted - - - - <<" << 
+                endl << endl;
+
+    }
+
 public:
     int showDash();
     void registerEmp();
     void viewEmp();
     void setTax();
     void setBonus();
+    void fireEmp();
 
 };
 
@@ -465,6 +527,9 @@ int DashFunctions :: showDash()
 
         //5. Fire employee
         case 5:
+            showTitle();
+            fireEmp();
+            system("pause");
             break;
 
         //6. Logout & Exit
@@ -642,6 +707,59 @@ void DashFunctions :: setBonus()
     }
 }
 
+//this function is used to remove employee from list
+void DashFunctions :: fireEmp(){
+
+    cout << endl
+         << "-------------------------------------------" << endl
+         << "- - - - - - - -Fire Employee- - - - - - - -" << endl
+         << "-------------------------------------------" << endl;
+
+    viewEmp();
+    int selEmpId;
+    int foundSatus = 0;
+    int atLoc = 0;
+    int lastLoc = 3 - 1;
+
+    if (isExistEmp)
+    {
+
+        cout << endl
+             << ">>      Enter employee's id whom you want to fire : ";
+        cin >> selEmpId;
+
+        for (int i = 0; i < 3; i++)
+        {
+
+            if (emp[i].getId() == 0)
+            {
+                lastLoc = i;
+                break;
+            }
+            else
+            {
+
+                if (emp[i].getId() == selEmpId)
+                {
+
+                    foundSatus = 1;
+                    atLoc = i;
+                    break;
+                }
+            }
+        }
+
+        if (foundSatus)
+        {
+            swap(atLoc, lastLoc);
+        }
+        else{
+            cout << endl
+                 << ">> - - There is no employee with id " << selEmpId << "! - - <<" << endl
+                 << endl;
+        }
+    }
+}
 
 
 // main method
