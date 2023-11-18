@@ -3,3 +3,6 @@ cout << endl << ">> - - Invalid! Enter valid choice - - <<"
 
 cout << endl << ">> - - - - - Login Successful - - - - - <<" << 
         endl << endl;
+
+cout << endl << ">>    Enter user name : ";
+    getline(cin >> ws, userName);

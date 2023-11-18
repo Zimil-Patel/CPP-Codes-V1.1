@@ -55,16 +55,91 @@ public:
     int adminLogin();
 };
 
+//all employee related attributes are store here...
+class EmployeeData{
+
+private:
+    int id = 0;
+    string name;
+    int age = 0;
+    int experience = 0;
+    string role;
+    int salary = 0;
+    int bonus = 0;
+    string city;
+
+public:
+    //assign values to private employee data
+    void ValueSetter(int emp_id, string emp_name, int emp_age, int emp_exp, string emp_role, int emp_sal, int emp_bonus, string emp_city){
+
+        id = emp_id;
+        name = emp_name;
+        age = emp_age;
+        experience = emp_exp;
+        role = emp_role;
+        salary = emp_sal;
+        bonus = emp_bonus;
+        city = emp_city;
+
+    }
+
+    //get all employee data
+    void display(){
+
+        cout << endl << id <<
+                endl << name <<
+                endl << age <<
+                endl << city <<
+                endl << role <<
+                endl << experience <<
+                endl << salary;
+
+    }
+
+    //get employee private data
+    int getId(){return id;}
+
+};
+
 // all dash attributes and functions are stored here
 class DashFunctions
 {
 
+private:
+    EmployeeData emp[3];
+    int isExistEmp;
+    int isFull;
+    int id, age, exp, sal, bonus;
+    string name, role, city;
+
+    //check if there exist and employee in employee list
+    void checkIfExist(){
+
+        isExistEmp = 1;
+
+        if (emp[0].getId() == 0)
+            isExistEmp = 0;
+
+    }
+
+    //check if employee list is full
+    void checkIfFull(){
+
+        isFull = 0;
+
+        if(emp[3- 1].getId() != 0)
+            isFull = 1;
+
+    }
+
 public:
     int showDash();
+    void registerEmp();
+    void viewEmp();
 };
 
 // all AdminLogin class's functions defination are defined here...
-int AdminLogin ::adminLogin()
+int AdminLogin :: adminLogin()
 {
 
     showTitle();
@@ -121,7 +196,7 @@ int AdminLogin ::adminLogin()
 }
 
 // display different options to user and asking which operation admin want to perform
-int DashFunctions ::showDash()
+int DashFunctions :: showDash()
 {
 
     showTitle();
@@ -153,10 +228,14 @@ int DashFunctions ::showDash()
 
         //1. Register new employee
         case 1:
+            registerEmp();
+            system("pause");
             break;
 
         //2. View all employees   
         case 2:
+            viewEmp();
+            system("pause");
             break;
 
         //3. Set Tax to salary 
@@ -189,6 +268,73 @@ int DashFunctions ::showDash()
     }
 
     return 1;
+}
+
+//this function is used to register new employee by geeting employee details from admin
+void DashFunctions :: registerEmp(){
+
+    checkIfFull();
+
+    if (isFull){
+
+        cout << endl << ">> - - - -Employee list is full- - - - <<" <<
+                endl << endl;
+
+    } else {
+
+        cout << endl << ">>    id : ";
+        cin >> id;
+
+        cout << ">>    name :";
+        getline(cin >> ws, name);
+
+        cout << ">>    age : ";
+        cin >> age;
+
+        cout << ">>    experience (in year) : ";
+        cin >> exp;
+
+        cout << ">>    role :";
+        getline(cin >> ws, role);
+
+        cout << ">>    city :";
+        getline(cin >> ws, city);
+
+        for (int i = 0; i < 3; i++){
+
+            if (emp[i].getId() == 0){
+
+                emp[i].ValueSetter(id, name, age, exp, role, 0, 0, city);
+                break;
+            
+            }
+
+        }
+
+        cout << endl << ">> - - - - Employee Registered - - - - <<" <<
+                endl << endl;
+
+    }
+
+}
+
+//this function display all employee details
+void DashFunctions :: viewEmp(){
+
+    checkIfExist();
+
+    if (isExistEmp == 1){
+
+        for (int i = 0; i < 3; i++)
+            if (emp[i].getId() != 0)
+                emp[i].display();
+
+    } else {
+
+        cout << endl << ">> - - -There is no employee data- - - <<" <<
+                endl << endl;
+    }
+
 }
 
 // main method
