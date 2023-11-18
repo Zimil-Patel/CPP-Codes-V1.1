@@ -86,13 +86,14 @@ public:
     //get all employee data
     void display(){
 
-        cout << endl << id <<
-                endl << name <<
-                endl << age <<
-                endl << city <<
-                endl << role <<
-                endl << experience <<
-                endl << salary;
+        cout << endl << "   ID : " << id <<
+                endl << "   NAME : " << name <<
+                endl << "   AGE : " << age <<
+                endl << "   CITY : " << city <<
+                endl << "   ROLE : " << role <<
+                endl << "   EXPERIENCE : " << experience << "(YEAR)" <<
+                endl << "   SALARY : " << salary << " (+bonus : " << bonus << ")" <<
+                endl;
 
     }
 
@@ -109,6 +110,7 @@ private:
     EmployeeData emp[3];
     int isExistEmp;
     int isFull;
+    char repeat;
     int id, age, exp, sal, bonus;
     string name, role, city;
 
@@ -224,16 +226,20 @@ int DashFunctions :: showDash()
     cout << endl << ">>    Enter your choice [1/2/3/4/5/6] : ";
     cin >> choice;
 
+    system("cls");
+
     switch(choice){
 
         //1. Register new employee
         case 1:
+            showTitle();
             registerEmp();
             system("pause");
             break;
 
         //2. View all employees   
         case 2:
+            showTitle();
             viewEmp();
             system("pause");
             break;
@@ -273,67 +279,91 @@ int DashFunctions :: showDash()
 //this function is used to register new employee by geeting employee details from admin
 void DashFunctions :: registerEmp(){
 
-    checkIfFull();
+    cout << endl
+         << "-------------------------------------------" << endl
+         << "- - - - - - -Register Employee- - - - - - -" << endl
+         << "-------------------------------------------" << endl;
 
-    if (isFull){
+    do{
 
-        cout << endl << ">> - - - -Employee list is full- - - - <<" <<
-                endl << endl;
+        checkIfFull();
 
-    } else {
+        if (isFull){
 
-        cout << endl << ">>    id : ";
-        cin >> id;
+            cout << endl << ">> - - - -Employee list is full- - - - <<" <<
+                    endl << endl;
 
-        cout << ">>    name :";
-        getline(cin >> ws, name);
+        } else {
 
-        cout << ">>    age : ";
-        cin >> age;
+            cout << endl << ">>    Enter employee details" << endl;
 
-        cout << ">>    experience (in year) : ";
-        cin >> exp;
+            cout << endl << ">>    id : ";
+            cin >> id;
 
-        cout << ">>    role :";
-        getline(cin >> ws, role);
+            cout << ">>    name : ";
+            getline(cin >> ws, name);
 
-        cout << ">>    city :";
-        getline(cin >> ws, city);
+            cout << ">>    age : ";
+            cin >> age;
 
-        for (int i = 0; i < 3; i++){
+            cout << ">>    experience (in year) : ";
+            cin >> exp;
 
-            if (emp[i].getId() == 0){
+            cout << ">>    role : ";
+            getline(cin >> ws, role);
 
-                emp[i].ValueSetter(id, name, age, exp, role, 0, 0, city);
-                break;
-            
+            cout << ">>    city : ";
+            getline(cin >> ws, city);
+
+            for (int i = 0; i < 3; i++)
+            {
+
+                if (emp[i].getId() == 0)
+                {
+                    emp[i].ValueSetter(id, name, age, exp, role, 0, 0, city);
+                    break;
+                }
+
             }
 
+            cout << endl << ">> - - - - Employee Registered - - - - <<" << endl
+                << endl;
         }
 
-        cout << endl << ">> - - - - Employee Registered - - - - <<" <<
-                endl << endl;
+        cout << endl << ">>    Do you want to add another? [y/n]: ";
+        cin >> repeat;
 
-    }
+    } while(repeat == 'y' || repeat == 'Y');
 
 }
 
 //this function display all employee details
 void DashFunctions :: viewEmp(){
 
+    cout << endl
+         << "-------------------------------------------" << endl
+         << "- - - - - - -All Employee Data- - - - - - -" << endl
+         << "-------------------------------------------" << endl;
+
     checkIfExist();
 
     if (isExistEmp == 1){
 
         for (int i = 0; i < 3; i++)
-            if (emp[i].getId() != 0)
+            if (emp[i].getId() != 0){
+
+                cout << endl << ">> Employee " << i + 1;
                 emp[i].display();
+
+            }
 
     } else {
 
         cout << endl << ">> - - -There is no employee data- - - <<" <<
                 endl << endl;
     }
+
+    cout << endl;
 
 }
 
