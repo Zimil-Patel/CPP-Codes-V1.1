@@ -14,7 +14,6 @@
 #include <unistd.h>
 
 using namespace std;
-using namespace std;
 
 // display employee managment title
 void showTitle()
