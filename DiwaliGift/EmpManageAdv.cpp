@@ -76,8 +76,7 @@ int AdminLogin ::adminLogin()
          << "-------------------------------------------" << endl;
 
     // getting userNane and password from user
-    cout << endl
-         << ">>    Enter user name : ";
+    cout << endl << ">>    Enter user name : ";
     getline(cin >> ws, userName);
 
     cout << ">>    Enter password : ";
@@ -147,8 +146,7 @@ int DashFunctions ::showDash()
          << "# # # # # # # # # # # # ## # # # # # # # # #" << endl;
 
     // getting choice from user
-    cout << endl
-         << ">>    Enter your choice [1/2/3/4/5/6] : ";
+    cout << endl << ">>    Enter your choice [1/2/3/4/5/6] : ";
     cin >> choice;
 
     switch(choice){
@@ -203,12 +201,28 @@ int main()
     // calling adminLogin();
     int loginStatus = adminFun.adminLogin();
 
+    int confirmExit = 'y';
+
     while (loginStatus)
     {
 
         // calling showDash(); getting login status value 
         loginStatus = dashfun.showDash();
         system("cls");
+
+        // //asking admin to exit
+        // if (!loginStatus){
+
+        //     cout << endl << ">>    Are you sure you want to exit ? [y/n]: ";
+        //     cin.ignore();
+        //     cin >> confirmExit;
+
+        //     if (confirmExit == 'y' || confirmExit == 'Y')
+        //         break;
+        //     else
+        //         loginStatus = adminFun.adminLogin();
+
+        // }
 
     }
 
