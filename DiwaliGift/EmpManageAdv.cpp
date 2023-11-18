@@ -175,15 +175,18 @@ int DashFunctions ::showDash()
 
         //6. Logout & Exit
         case 6:
-            return 0;
             cout << endl << ">> - - - - - Logout Successful - - - - <<" << 
                     endl << endl;
+            system("pause");
+            //defining loging status 0 by returing 0
+            return 0;
             break;
 
         //when user enter invalid option
         default:
             cout << endl << ">> - - Invalid! Enter valid choice - - <<" 
                  << endl << endl;
+            system("pause");
 
     }
 
@@ -203,8 +206,10 @@ int main()
     while (loginStatus)
     {
 
-        // calling showDash(); function
+        // calling showDash(); getting login status value 
         loginStatus = dashfun.showDash();
+        system("cls");
+
     }
 
     return 0;
