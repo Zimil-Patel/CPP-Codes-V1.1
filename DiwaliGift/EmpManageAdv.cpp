@@ -10,21 +10,6 @@
     ->modify employee role;
 */
 
-/* todo : 1
-
-showTitle();
-->display employee management Title
-
-adminLogin();
-->getUsernamePass;
-->verify and login;
-->logining in animation;
-->show login status;
-->use system("cls");
-->showDash();
-
-*/
-
 #include <iostream>
 #include <unistd.h>
 
@@ -170,17 +155,17 @@ private:
         int salary = 0;
 
         if (role == "INTERN")
-            salary = internSal - ((internSal * tax) / 100) + bonus;
+            salary = internSal + bonus - (( (internSal + bonus) * tax) / 100);
         else if (role == "JUNIOR STAFFER")
-            salary = juniorSal - ((juniorSal * tax) / 100) + bonus;
+            salary = juniorSal + bonus - (( (juniorSal + bonus) * tax) / 100);
         else if (role == "SENIOR STAFFER")
-            salary = seniorSal - ((seniorSal * tax) / 100) + bonus;
+            salary = seniorSal + bonus - (( (seniorSal + bonus) * tax) / 100);
         else if (role == "TEAM LEADER")
-            salary = teamLeaderSal - ((teamLeaderSal * tax) / 100) + bonus;
+            salary = teamLeaderSal + bonus - (( (teamLeaderSal + bonus) * tax) / 100);
         else if (role == "DEPARTMENT HEAD")
-            salary = deparmentHeadSal - ((deparmentHeadSal * tax) / 100) + bonus;
+            salary = deparmentHeadSal + bonus - (( (deparmentHeadSal + bonus) * tax) / 100);
         else if (role == "COO")
-            salary = cooSal - ((cooSal * tax) / 100) + bonus;
+            salary = cooSal + bonus - (( (cooSal + bonus) * tax) / 100);
 
         return salary;
         
@@ -331,16 +316,16 @@ int DashFunctions :: showDash()
     int choice;
 
     cout << endl
-         << "#-#-#-#-#-#-#--- Dash-Board ---#-#-#-#-#-#-#" << endl
-         << "#                                          #" << endl
-         << "#       1. Register new employee           #" << endl
-         << "#       2. View all employees              #" << endl
-         << "#       3. Set Tax to salary               #" << endl
-         << "#       4. Set bonus to salary             #" << endl
-         << "#       5. Fire employee                   #" << endl
-         << "#       6. Logout & Exit                   #" << endl
-         << "#                                          #" << endl
-         << "# # # # # # # # # # # # ## # # # # # # # # #" << endl;
+         << "#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#" << endl
+         << "#                                           #" << endl
+         << "#       1. Register new employee            #" << endl
+         << "#       2. View all employees               #" << endl
+         << "#       3. Set Tax to salary                #" << endl
+         << "#       4. Set bonus to salary              #" << endl
+         << "#       5. Fire employee                    #" << endl
+         << "#       6. Logout & Exit                    #" << endl
+         << "#                                           #" << endl
+         << "#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#" << endl;
 
     // getting choice from user
     cout << endl << ">>    Enter your choice [1/2/3/4/5/6] : ";
@@ -536,7 +521,7 @@ void DashFunctions :: setBonus()
             endl << "1. Paricular employee salary" << 
             endl << "2. Particular employee role" << 
             endl << "3. All employee salary" << 
-            endl << endl << "Enter choice [1/2/3] : ";
+            endl << endl << ">>      Enter choice [1/2/3] : ";
 
     cin >> bonusOption;
 
