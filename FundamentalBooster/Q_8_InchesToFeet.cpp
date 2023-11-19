@@ -48,16 +48,12 @@ int main(){
         feet = 0;
         inches = 0;
 
-        for (int i = 0; i < 2; i++){
+        cout << endl << "input => " << 
+                endl;
 
-            cout << endl << "input => " << i + 1 << endl;
-
-            //getting user value
-            feet += perform.getValues("feet : ");
-            inches += perform.getValues("inches : ");
-            
-
-        }
+        // getting user value
+        feet = perform.getValues("feet : ");
+        inches = perform.getValues("inches : ");
 
         //displaying result
         perform.display(feet, inches);
@@ -65,6 +61,8 @@ int main(){
         //Asking user to perform again
         cout << "Do you want to perform again ? (y/n) : ";
         cin >> repeat;
+
+        system("cls");
 
     }
 
