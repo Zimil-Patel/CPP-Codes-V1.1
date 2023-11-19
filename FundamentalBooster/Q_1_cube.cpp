@@ -51,7 +51,7 @@ int main(){
 
     char repeat = 'y';
 
-    while (repeat == 'y'){
+    while (repeat == 'y' || repeat == 'Y'){
 
         //getting user value
         perform.getValues();
@@ -62,6 +62,8 @@ int main(){
         //Asking user to perform again
         cout << "Do you want to perform again ? (y/n) : ";
         cin >> repeat;
+
+        system("cls");
 
     }
 
