@@ -367,7 +367,7 @@ private:
 
             j = i + 1;
 
-            if (j < 10){
+            if (j < 3){
 
                 emp[i].setId(emp[j].getId()); 
                 emp[i].setName(emp[j].getName());
