@@ -176,17 +176,17 @@ private:
         int salary = 0;
 
         if (role == "INTERN")
-            salary = internSal + bonus - (( (internSal + bonus) * tax) / 100);
+            salary = (internSal + bonus) - (( (internSal + bonus) * tax) / 100);
         else if (role == "JUNIOR STAFFER")
-            salary = juniorSal + bonus - (( (juniorSal + bonus) * tax) / 100);
+            salary = (juniorSal + bonus) - (( (juniorSal + bonus) * tax) / 100);
         else if (role == "SENIOR STAFFER")
-            salary = seniorSal + bonus - (( (seniorSal + bonus) * tax) / 100);
+            salary = (seniorSal + bonus) - (( (seniorSal + bonus) * tax) / 100);
         else if (role == "TEAM LEADER")
-            salary = teamLeaderSal + bonus - (( (teamLeaderSal + bonus) * tax) / 100);
+            salary = (teamLeaderSal + bonus) - (( (teamLeaderSal + bonus) * tax) / 100);
         else if (role == "DEPARTMENT HEAD")
-            salary = deparmentHeadSal + bonus - (( (deparmentHeadSal + bonus) * tax) / 100);
+            salary = (deparmentHeadSal + bonus) - (( (deparmentHeadSal + bonus) * tax) / 100);
         else if (role == "COO")
-            salary = cooSal + bonus - (( (cooSal + bonus) * tax) / 100);
+            salary = (cooSal + bonus) - (( (cooSal + bonus) * tax) / 100);
 
         return salary;
         
