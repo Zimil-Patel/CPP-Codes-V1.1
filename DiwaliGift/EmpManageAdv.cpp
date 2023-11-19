@@ -199,7 +199,7 @@ private:
         
         if (isExistEmp){
 
-            for (int i = 0; i < 10; i++){
+            for (int i = 0; i < 3; i++){
 
                 //Chekcing is there exists an employee
                 if (emp[i].getId() == 0)
@@ -216,7 +216,7 @@ private:
     //update salary after adding bonus to particular employee role
     void addBonusToSalary(string role, int bonus){
 
-        for (int i = 0; i < 10; i++){
+        for (int i = 0; i < 3; i++){
 
             //Chekcing is there exists an employee
             if (emp[i].getId() == 0)
@@ -340,7 +340,7 @@ private:
             cout << endl << "Enter Bonus amount : ";
             cin >> bonus;
 
-            for (int i = 0; i < 10; i++){
+            for (int i = 0; i < 3; i++){
 
                 //check if there exist an employee or not
                 if (emp[i].getId() == 0)
