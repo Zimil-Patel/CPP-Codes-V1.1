@@ -1,29 +1,29 @@
 /*
-14. Gaurav must have to teach his little 5 years old baby
-to check whether a given year is leap year or not. Write
-a C++ Program to provide a solution for Gaurav.
+16. Two friends are playing a game in which they have to
+check whether a given number is Even or Odd. Help them to
+Write a C++ Program for that.
 */
 
 #include<iostream>
 using namespace std;
 
-class LeapYear{
+class EvenOdd{
 
     private:
-    int year;
+    int number;
 
     public:
-    //thie method set value to year
-    void setter(int value){year = value;}
+    //thie method set value to number
+    void setter(int value){number = value;}
 
     //checking and displaying value
     void display(){
 
-        if (year % 4 == 0){
-            cout << endl << "Given year is leap year!" <<
+        if (number % 2 == 0){
+            cout << endl << "Given number is Even number!" <<
                     endl << endl;
         } else {
-            cout << endl << "Given year is not leap year!" <<
+            cout << endl << "Given number is not Odd number!" <<
                     endl << endl;
         }
 
@@ -34,13 +34,13 @@ class LeapYear{
 //main method
 int main(){
 
-    LeapYear perform = LeapYear();
+    EvenOdd perform = EvenOdd();
     int value;
     char repeat = 'y';
 
     while (repeat == 'y' || repeat == 'Y'){
 
-        cout << endl << "Enter year : ";
+        cout << endl << "Enter number : ";
         cin >> value;
 
         //assigning value

@@ -9,7 +9,7 @@ solution to Aaryan.
 #include<iostream>
 using namespace std;
 
-//this class include attributes and method to convert ASCII value
+
 class VowelOrConsonant{
 
     private:
