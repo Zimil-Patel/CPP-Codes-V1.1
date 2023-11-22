@@ -28,7 +28,7 @@ void showTitle(){
 class StudentData{
 
     private:
-    int cust_mobile_number;
+    long long cust_mobile_number;
     int cust_id, cust_age, cust_sim_validity;
     string cust_name, cust_city, cust_telcom_brand;
 
@@ -65,19 +65,19 @@ class StudentData{
 
         cout << endl << ">>Customer " << count << endl;
         //id
-        cout << endl << "     id : " << cust_id;
+        cout << endl << "     id : " << cust_id << endl;
         //name
-        cout << "     name : " << cust_name;
+        cout << "     name : " << cust_name << endl;
         //age
-        cout << "     age : " << cust_age;
+        cout << "     age : " << cust_age << endl;
         //city
-        cout << "     city : " << cust_city;
+        cout << "     city : " << cust_city << endl;
         //mobile number
-        cout << "     mobile no. : " << cust_mobile_number;
+        cout << "     mobile no. : " << cust_mobile_number << endl;
         //sim validity
-        cout << "     sim card validity (year) : " << cust_sim_validity;
+        cout << "     sim card validity (year) : " << cust_sim_validity << endl;
         //telecom brand
-        cout << "     telecom brand (Airtel, Jio, Vi) : " << cust_telcom_brand;
+        cout << "     telecom brand (Airtel, Jio, Vi) : " << cust_telcom_brand << endl;
     
     }
 
@@ -92,7 +92,7 @@ int main(){
 
     cout << endl << ">> Enter Customer Details <<" << endl; 
 
-    for (int i = 0; i < 2; i++){
+    for (int i = 0; i < 5; i++){
 
         stu[i].setter(i + 1);
 
@@ -100,7 +100,7 @@ int main(){
 
     cout << endl << ">> Customer Data <<" << endl;
 
-    for (int i = 0; i < 2; i++){
+    for (int i = 0; i < 5; i++){
 
         stu[i].display(i + 1);
 
