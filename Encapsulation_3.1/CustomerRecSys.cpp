@@ -28,7 +28,7 @@ void showTitle(){
 class StudentData{
 
     private:
-    long int cust_mobile_number;
+    int cust_mobile_number;
     int cust_id, cust_age, cust_sim_validity;
     string cust_name, cust_city, cust_telcom_brand;
 
@@ -108,5 +108,4 @@ int main(){
 
     return 0;
 }
-
 

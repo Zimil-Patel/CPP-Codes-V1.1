@@ -1,18 +1,23 @@
 #include <iostream>
 #include <string>
+using namespace std;
 
 int main()
 {
-    long long int T;
-    std::cout<<"Entye T:";
-    std::cin >> T;
-    std::cin.ignore(1,'\n');
-    for (int i = 0; i < T; i++)
+    long long int T,t1;
+    int s1,s2,s3;
+    string str1,str2,str3;
+    // cout<<"Entye T:";
+    // cin >> T;
+    //cin.ignore(1,'\n');
+    for (int i = 0; i < 1; i++)
     {
-        std::string s;
-        std::cout<<"Enter "<<i<<" : ";
-        std::getline (std::cin, s);
-        std::cout << s << std::endl;
+        cout<<"Enter "<<i<<" : ";
+        cin >> s1;
+        getline(cin >> ws, str1);
+        cin >> t1;
+        cin >> s2;
+
     }
 
 
