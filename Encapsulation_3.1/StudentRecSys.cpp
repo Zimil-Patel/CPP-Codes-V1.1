@@ -61,21 +61,21 @@ class StudentData{
 
     void display(int count){
 
-        cout << endl << ">>Student " << count;
+        cout << endl << ">>Student " << count << endl;
         //id
-        cout << endl << "  id : " << stu_id;
+        cout << endl << "  id : " << stu_id << endl;
         //name
-        cout << "  name : " << stu_name;
+        cout << "  name : " << stu_name << endl;
         //age
-        cout << "  age : " << stu_age;
+        cout << "  age : " << stu_age << endl;
         //course
-        cout << "  course : " << stu_course;
+        cout << "  course : " << stu_course << endl;
         //city
-        cout << "  city : " << stu_city;
+        cout << "  city : " << stu_city << endl;
         //email
-        cout << "  email : " << stu_email;
+        cout << "  email : " << stu_email << endl;
         //college
-        cout << "  college : " << stu_college;
+        cout << "  college : " << stu_college << endl;
 
     }
 
@@ -88,7 +88,7 @@ int main(){
 
     showTitle();
 
-    cout << endl << ">> Enter Student Details <<"; 
+    cout << endl << ">> Enter Student Details <<" << endl; 
 
     for (int i = 0; i < 5; i++){
 
@@ -96,7 +96,7 @@ int main(){
 
     }
 
-    cout << endl << ">> Students Data <<";
+    cout << endl << ">> Students Data <<" << endl;
 
     for (int i = 0; i < 5; i++){
 
