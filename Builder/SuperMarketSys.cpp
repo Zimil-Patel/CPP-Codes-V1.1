@@ -12,3 +12,11 @@ Requirements:
 - All Records
 - By Searching Item Number
 */
+#include<iostream>
+using namespace std;
+
+//main method
+int main(){
+
+    return 0;
+}
