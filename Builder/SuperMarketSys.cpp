@@ -99,6 +99,53 @@ class DashFunctions{
 
         }
 
+        //add records 
+        void addRecords(){
+
+            //check if list is full or not
+            if(items[2].getItemNumber() != 0){
+
+                cout << endl << ">> Can't add more list is full! <<" <<
+                        endl << endl;
+                system("pause");
+
+            } else {
+
+                for (int i = 0; i < 3; i++){
+
+                    if (items[i].getItemNumber() == 0){
+                        cout << endl << ">>    Enter item " << i + 1 << " details" <<
+                                endl;
+                        //number
+                        cout << "Item Number : ";
+                        cin >> number;
+                        //name
+                        cout << "Item Name : ";
+                        getline(cin >> ws, name);
+                        //quantity
+                        cout << "Item Quantity : ";
+                        cin >> quantity;
+                        //price
+                        cout << "Item Price : ";
+                        cin >> price;
+                        //discount
+                        cout << "Item Discount : ";
+                        cin >> discount;
+
+                        items[i].setItemData(number, name, quantity, price, discount);
+
+                        cout << endl << ">> Item Added <<" <<
+                                endl;
+                    } else {
+                        continue;
+                    }
+
+                }
+
+            }
+
+
+        }
 
         //default constructor
         DashFunctions(){
@@ -144,6 +191,10 @@ int main(){
 
             case1 :
             system("cls");
+            cout << endl << "- - - - - - - - - - - - - - - - - -" <<
+                    endl << "          > Add Records <" <<
+                    endl << "- - - - - - - - - - - - - - - - - -" <<
+                    endl << endl;
             break;
 
             case 2:
