@@ -20,7 +20,7 @@ using namespace std;
 class SuperMarket{
 
     private:
-        static string marketName;
+        static string date;
         static string userName;
         static string password;
         int itemNumber = 0;
@@ -34,7 +34,7 @@ class SuperMarket{
         void setItemData(int itemNumber, string itemName, int itemQuantity, int itemPrice, int itemDiscount){
 
             this->itemNumber = itemNumber;
-            this->itemName = itemNumber;
+            this->itemName = itemName;
             this->itemQuantity = itemQuantity;
             this->itemPrice = itemPrice;
             this->itemDiscount = itemDiscount;
@@ -46,12 +46,32 @@ class SuperMarket{
             return itemNumber;
         }
 
+        string getItemName(){
+            return itemName;
+        }
+
+        int getItemQuantity(){
+            return itemQuantity;
+        }
+
+        int getItemPrice(){
+            return itemPrice;
+        }
+
+        int getItemDiscout(){
+            return itemDiscount;
+        }
+
         string getUserName(){
             return userName;
         }
 
         string getPassword(){
             return password;
+        }
+
+        string getDate(){
+            return date;
         }
 
 };
@@ -102,12 +122,18 @@ class DashFunctions{
         //add records 
         void addRecords(){
 
+            cout << endl << "- - - - - - - - - - - - - - - - - -" <<
+                    endl << "          > Add Records <" <<
+                    endl << "- - - - - - - - - - - - - - - - - -" <<
+                    endl << endl;
+
             //check if list is full or not
             if(items[2].getItemNumber() != 0){
 
                 cout << endl << ">> Can't add more list is full! <<" <<
                         endl << endl;
                 system("pause");
+                system("cls");
 
             } else {
 
@@ -142,8 +168,50 @@ class DashFunctions{
 
                 }
 
+                system("pause");
+                system("cls");
+
             }
 
+
+        }
+
+        void DisplayRecords(){
+
+            cout << endl << "- - - - - - - - - - - - - - - - - -" <<
+                    endl << "          > All Records <" <<
+                    endl << "- - - - - - - - - - - - - - - - - -" <<
+                    endl << endl;
+
+            //check if an data exist
+            if(items[0].getItemNumber() == 0){
+                cout << endl << ">> There is no Records(items) <<" <<
+                        endl << endl;
+                system("pause");
+                system("cls");
+            } else {
+
+                for (int i = 0; i < 3; i++){
+
+                    if (items[i].getItemNumber() == 0)
+                        continue;
+                    else {
+
+                        cout << endl << "Item " << i + 1 <<
+                                endl << "date : " << items[i].getDate() <<
+                                endl << "Item Number : " << items[i].getItemNumber() <<
+                                endl << "Item Name : " << items[i].getItemName() <<
+                                endl << "Item Quantity : " << items[i].getItemQuantity() <<
+                                endl << "Item Price : " << items[i].getItemPrice() << "( With discount " << items[i].getItemPrice() - items[i].getItemDiscout() << ")" <<
+                                endl << "Item Discount : " << items[i].getItemDiscout() <<
+                                endl;
+
+                    }
+
+                }
+                system("pause");
+                system("cls");
+            }
 
         }
 
@@ -159,7 +227,7 @@ class DashFunctions{
 };
 
 //Assiging values to all static variable
-string SuperMarket::marketName = "D-Mart";
+string SuperMarket::date = "28-11-2023";
 string SuperMarket::userName = "admin";
 string SuperMarket::password = "1234";
 
@@ -189,27 +257,29 @@ int main(){
 
         switch(choice){
 
-            case1 :
-            system("cls");
-            cout << endl << "- - - - - - - - - - - - - - - - - -" <<
-                    endl << "          > Add Records <" <<
-                    endl << "- - - - - - - - - - - - - - - - - -" <<
-                    endl << endl;
-            break;
+            case 1:
+                system("cls");
+                perform.addRecords();
+                 break;
 
             case 2:
-            system("cls");
-            break;
+                system("cls");
+                perform.DisplayRecords();
+                break;
 
             case 3:
-            system("cls");
-            break;
+                system("cls");
+                break;
 
             case 4:
-            cout << endl << ">> Logout Successfull <<" <<
-                    endl << endl;
-            loginStatus = 0;
-            break;
+                cout << endl << ">> Logout Successfull <<" <<
+                        endl << endl;
+                loginStatus = 0;
+                break;
+
+            default:
+                system("Invalid choice!");
+                break;
 
         }
 
