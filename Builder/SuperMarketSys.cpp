@@ -215,6 +215,65 @@ class DashFunctions{
 
         }
 
+        //Search Item
+        void searchItem(){
+
+            int number;
+            int foundStatus = 0;
+            int foundAt = 0;
+            cout << endl << "- - - - - - - - - - - - - - - - - -" <<
+                    endl << "        > Seaarch Records <" <<
+                    endl << "- - - - - - - - - - - - - - - - - -" <<
+                    endl << endl;
+
+            cout << endl << "Enter item number to search : ";
+            cin >> number;
+
+            if (number == 0){
+                foundStatus = 0;
+            } else {
+
+                //seacrh the number in records
+                for (int i = 0; i < 3; i++){
+
+                    if(number == items[i].getItemNumber()){
+                        foundStatus = 1;
+                        foundAt = i;
+                    }
+
+                }
+
+            }
+
+            
+
+            //dislplay if found
+            if (foundStatus){
+
+                cout << endl << "Item " << foundAt + 1 <<
+                                endl << "date : " << items[foundAt].getDate() <<
+                                endl << "Item Number : " << items[foundAt].getItemNumber() <<
+                                endl << "Item Name : " << items[foundAt].getItemName() <<
+                                endl << "Item Quantity : " << items[foundAt].getItemQuantity() <<
+                                endl << "Item Price : " << items[foundAt].getItemPrice() << "( With discount " << items[foundAt].getItemPrice() - items[foundAt].getItemDiscout() << ")" <<
+                                endl << "Item Discount : " << items[foundAt].getItemDiscout() <<
+                                endl;
+
+                system("pause");
+                system("cls");
+
+            } else {
+
+                cout << endl << "No record found!" << 
+                        endl << endl;
+
+                system("pause");
+                system("cls");
+
+            }
+
+        }
+
         //default constructor
         DashFunctions(){
             cout << endl << "- - - - - - - - - - - - - - - - - -" <<
@@ -269,6 +328,7 @@ int main(){
 
             case 3:
                 system("cls");
+                perform.searchItem();
                 break;
 
             case 4:
