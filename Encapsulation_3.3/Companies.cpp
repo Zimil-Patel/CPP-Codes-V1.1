@@ -25,7 +25,7 @@ class Companies{
         string comp_ceo;
 
     public:
-        Companies(int comp_id, string comp_name, int comp_staff_quantity, int comp_revenue, 
+        void setterAndGetter(int comp_id, string comp_name, int comp_staff_quantity, int comp_revenue, 
         int imported_diamonds, int exported_diamonds, string comp_ceo){
 
             this->comp_id = comp_id;
@@ -70,7 +70,7 @@ class Companies{
             cout << "      Company CEO : ";
             getline(cin >> ws, ceo);
 
-            Companies(id, name, staff, rev, imported, exported, ceo);
+            setterAndGetter(id, name, staff, rev, imported, exported, ceo);
 
         }
 
