@@ -1,6 +1,4 @@
-/*
-Q.2 Write a Program to perform four different numbers’ sum by inheriting constructors in hybrid inheritance.
-*/
+/*WAP to sovle Ambiguity error*/
 
 #include<iostream>
 using namespace std;
