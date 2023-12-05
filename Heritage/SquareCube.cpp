@@ -13,7 +13,7 @@ class Arithmetic{
     public:
         Arithmetic(){
 
-            cout << endl << "Enter number for Square : ";
+            cout << endl << "Enter number : ";
             cin >> number;
 
         }
@@ -33,7 +33,7 @@ class Square : public Arithmetic{
 class Cube : public Arithmetic{
 
     public:
-        void getSuqare(){
+        void getCube(){
 
             cout << "Cube of " << number << " = " << number * number * number << endl; 
 
@@ -46,7 +46,7 @@ int main(){
     Square square;
     square.getSuqare();
     Cube cube;
-    cube.getSuqare();
+    cube.getCube();
 
     return 0;
 }
