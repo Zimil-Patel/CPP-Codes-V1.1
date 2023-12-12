@@ -16,15 +16,50 @@ can_terminate
 #include<iostream>
 using namespace std;
 
-class Admin{
+class Employee{
 
     protected:
         string company_name = "LNT";
-        int manager_salary = 80000;
+
+    public:
+        void myAccess(){
+
+            cout << endl << ">>  By Employee Access : " << endl;
+            cout << "    Company Name : " << company_name << endl;
+
+        }
+
+};
+
+
+class Manager : public Employee{
+
+    protected:
         int employee_salary = 50000;
         int total_staff = 20;
         int total_annual_revenue = 1.57;
         bool can_terminate = true;
+
+    public:
+        void myAccess(){
+
+            cout << endl << ">>  By Manager Access : " << endl;
+            cout << "    Company Name : " << company_name << endl
+                 << "    Employee Salary : " << employee_salary << endl
+                 << "    Total Staff : " << total_staff << endl
+                 << "    Total Annual Revenue : " << total_annual_revenue << endl
+                 << "    Can Terminate : " << can_terminate << endl; 
+
+        }
+
+};
+
+
+
+class Admin : public Manager{
+
+    protected:
+        int manager_salary = 80000;
 
     public:
         void myAccess(){
@@ -40,37 +75,6 @@ class Admin{
         }
 
 };
-
-class Manager : public Admin{
-
-    public:
-        void myAccess(){
-
-            cout << endl << ">>  By Manager Access : " << endl;
-            cout << "    Company Name : " << company_name << endl
-                 << "    Manager Salary : " << manager_salary << endl
-                 << "    Employee Salary : " << employee_salary << endl
-                 << "    Total Staff : " << total_staff << endl
-                 << "    Total Annual Revenue : " << total_annual_revenue << endl;
-
-        }
-
-};
-
-class Employee : public Admin{
-
-    public:
-        void myAccess(){
-
-            cout << endl << ">>  By Employee Access : " << endl;
-            cout << "    Company Name : " << company_name << endl
-                 << "    Employee Salary : " << employee_salary << endl
-                 << "    Total Annual Revenue : " << total_annual_revenue << endl;
-
-        }
-
-};
-
 
 
 int main(){
