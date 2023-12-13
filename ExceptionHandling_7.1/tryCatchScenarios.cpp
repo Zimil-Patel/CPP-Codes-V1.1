@@ -105,5 +105,7 @@ int main(){
     t.checkAge();
     t.checkPassword();
 
+    cout << endl;
+
     return 0;
 }
