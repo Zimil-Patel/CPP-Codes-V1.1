@@ -70,9 +70,28 @@ class TryCatchScenario{
             cout << "Enter  password : ";
             getline(cin >> ws, password);
 
-            for (int i = 0; i < )
+            try{
 
+                for (int i = 0; i < password.length(); i++){
 
+                    if (password[i] >= 'A' && password[i] <= 'Z'){
+                        containCapital = true;
+                        break;
+                    }
+
+                }
+
+                if (containCapital)
+                    cout << endl << "Valid password." << endl;
+                else
+                    throw 'e'; 
+
+            }
+            catch(...){
+
+                cout << endl << "Invalid! password must contain at least one uppercase letter." << endl;
+
+            }
 
         }
 
@@ -81,6 +100,10 @@ class TryCatchScenario{
 
 int main(){
 
+    TryCatchScenario t;
+    t.checkDivison();
+    t.checkAge();
+    t.checkPassword();
 
     return 0;
 }
