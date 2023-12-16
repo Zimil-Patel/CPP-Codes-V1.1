@@ -2,7 +2,7 @@
 register //done
 salary  //done
 tax     //done
-bonus
+bonus //done
 role -- Intern - 8000, //done
         Junior staffer - 15000, 
         senior staffer 100000, 
