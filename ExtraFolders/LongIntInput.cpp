@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 using namespace std;
-
 int main()
 {
     long long int T,t1;
