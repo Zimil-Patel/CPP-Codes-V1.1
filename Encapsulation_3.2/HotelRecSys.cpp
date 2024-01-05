@@ -10,6 +10,7 @@ including the below-mentioned attributes:
 - hotel_establish_year - static
 - hotel_staff_quantity
 - hotel_room_quantity
+
 */
 #include<iostream>
 #include<string>
