@@ -1,4 +1,4 @@
-//WAP to solve ambiguity error - permamnent solution
+//WAP to solve ambiguity error - permamnent solution...
 
 #include<iostream>
 using namespace std;
