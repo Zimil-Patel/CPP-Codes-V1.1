@@ -1,5 +1,4 @@
 /*WAP to sovle Ambiguity error*/
-
 #include<iostream>
 using namespace std;
 
