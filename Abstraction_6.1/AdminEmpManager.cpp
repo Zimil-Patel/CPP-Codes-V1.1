@@ -12,7 +12,6 @@ can_terminate
 - use all attributes accessibility in the parent class and child class properly.
 - override a method myAccess() in both child classes to display all parent class members' values accordingly.
 */
-
 #include<iostream>
 using namespace std;
 
