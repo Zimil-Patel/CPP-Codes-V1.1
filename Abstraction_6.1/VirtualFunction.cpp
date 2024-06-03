@@ -1,7 +1,6 @@
 //WAP to solve ambiguity error - permamnent solution...
 #include<iostream>
 using namespace std;
-
 class A{
 
     protected:
