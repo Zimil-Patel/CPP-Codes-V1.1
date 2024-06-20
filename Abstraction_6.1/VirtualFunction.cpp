@@ -4,7 +4,6 @@ using namespace std;
 class A{
     protected:
         int a = 10;
-
     public:
         virtual void display(){
             cout << endl << "Called in class A";
