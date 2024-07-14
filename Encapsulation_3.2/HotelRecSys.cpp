@@ -27,7 +27,6 @@ class HotelData{
     static int hotel_establish_year;
     int hotel_staff_quantitiy;
     int hotel_room_quantity;
-
     public:
     // static void setHotelNameAndEstablishYear(){
     //     cout << endl << ">> Enter Hotel details <<";
