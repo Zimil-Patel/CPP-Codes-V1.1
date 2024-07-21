@@ -11,6 +11,7 @@ including the below-mentioned attributes:
 - hotel_staff_quantity
 - hotel_room_quantity
 */
+
 #include<iostream>
 #include<string>
 using namespace std;
