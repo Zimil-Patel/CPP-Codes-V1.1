@@ -3,7 +3,6 @@
 #include <string>
 using namespace std;
 
-
 void searchName(const vector<string>& names, const string& name) {
     bool found = false;
     for (size_t i = 0; i < names.size(); ++i) {
