@@ -7,7 +7,6 @@ Abstract class such like:
 - the area of a rectangle
 - use one single pure virtual function named calculate() 
 to perform all the above operations
-
 */
 
 #include<iostream>
