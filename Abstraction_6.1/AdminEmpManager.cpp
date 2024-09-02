@@ -1,4 +1,5 @@
 /*
+
 Q.1 Write a Program to abstract some attributes of class Admin to prevent them to be inherited by its child classes.
 - Class Admin -> Class Manager
 - Class Manager -> Class Employee
